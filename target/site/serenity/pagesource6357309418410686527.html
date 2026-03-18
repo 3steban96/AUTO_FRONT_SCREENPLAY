@@ -1,0 +1,3893 @@
+<html lang='en'><head><link href='prism/prism.css' rel='stylesheet' /></head><body><script src='prism/prism.js'></script><body><div><pre><code class='language-html'>&lt;html lang="en" data-theme="light"&gt;<br/>
+ &lt;head&gt;<br/>
+  &lt;script type="module"&gt;import { injectIntoGlobalHook } from "/@react-refresh";<br/>
+injectIntoGlobalHook(window);<br/>
+window.$RefreshReg$ = () =&gt; {};<br/>
+window.$RefreshSig$ = () =&gt; (type) =&gt; type;&lt;/script&gt;<br/>
+  &lt;script type="module" src="/@vite/client"&gt;&lt;/script&gt;<br/>
+  &lt;meta charset="UTF-8"&gt;<br/>
+  &lt;link rel="icon" type="image/svg+xml" href="/vite.svg"&gt;<br/>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br/>
+  &lt;title&gt;Reservas Sofka&lt;/title&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/index.css"&gt;:root {<br/>
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;<br/>
+  line-height: 1.5;<br/>
+  font-weight: 400;<br/>
+<br/>
+  color-scheme: light dark;<br/>
+  color: rgba(255, 255, 255, 0.87);<br/>
+  background-color: #242424;<br/>
+<br/>
+  font-synthesis: none;<br/>
+  text-rendering: optimizeLegibility;<br/>
+  -webkit-font-smoothing: antialiased;<br/>
+  -moz-osx-font-smoothing: grayscale;<br/>
+}<br/>
+<br/>
+a {<br/>
+  font-weight: 500;<br/>
+  color: #646cff;<br/>
+  text-decoration: inherit;<br/>
+}<br/>
+<br/>
+a:hover {<br/>
+  color: #535bf2;<br/>
+}<br/>
+<br/>
+body {<br/>
+  margin: 0;<br/>
+  min-width: 320px;<br/>
+  min-height: 100vh;<br/>
+}<br/>
+<br/>
+h1 {<br/>
+  font-size: 3.2em;<br/>
+  line-height: 1.1;<br/>
+}<br/>
+<br/>
+button {<br/>
+  border-radius: 8px;<br/>
+  border: 1px solid transparent;<br/>
+  padding: 0.6em 1.2em;<br/>
+  font-size: 1em;<br/>
+  font-weight: 500;<br/>
+  font-family: inherit;<br/>
+  background-color: #1a1a1a;<br/>
+  cursor: pointer;<br/>
+  transition: border-color 0.25s;<br/>
+}<br/>
+<br/>
+button:hover {<br/>
+  border-color: #646cff;<br/>
+}<br/>
+<br/>
+button:focus,<br/>
+button:focus-visible {<br/>
+  outline: 4px auto -webkit-focus-ring-color;<br/>
+}<br/>
+<br/>
+@media (prefers-color-scheme: light) {<br/>
+  :root {<br/>
+    color: #213547;<br/>
+    background-color: #ffffff;<br/>
+  }<br/>
+<br/>
+  a:hover {<br/>
+    color: #747bff;<br/>
+  }<br/>
+<br/>
+  button {<br/>
+    background-color: #f9f9f9;<br/>
+  }<br/>
+}<br/>
+&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/styles/theme.css"&gt;:root {<br/>
+    /* Light Mode (Default) */<br/>
+    --bg-color: #fdfcfb;<br/>
+    --text-color: #1a1e23;<br/>
+    --primary-color: #ff8c03;<br/>
+    --primary-hover: #e57e02;<br/>
+    --secondary-color: #6c757d;<br/>
+    --card-bg: #ffffff;<br/>
+    --input-bg: #ffffff;<br/>
+    --input-border: #e2e8f0;<br/>
+    --button-text: #ffffff;<br/>
+    --link-color: #ff8c03;<br/>
+}<br/>
+/*L IA modifico el backgroundColor de la cardÂ´s y no estaba siguiendo lo requerido*/<br/>
+[data-theme='dark'] {<br/>
+    /* Dark Mode */<br/>
+    --bg-color: #383838;<br/>
+    --text-color: #e0e0e0;<br/>
+    --text-color-card: #ffffff;<br/>
+    --primary-color: #ff8c03;<br/>
+    --primary-hover: #ffa333;<br/>
+    --secondary-color: #94a3b8;<br/>
+    --card-bg: #464646;<br/>
+    --input-bg: #ffffff;<br/>
+    --input-border: #404040;<br/>
+    --button-text: #ffffff;<br/>
+    --link-color: #ffa333;<br/>
+}<br/>
+<br/>
+body {<br/>
+    background-color: var(--bg-color);<br/>
+    color: var(--text-color);<br/>
+    transition: background-color 0.3s ease, color 0.3s ease;<br/>
+    margin: 0;<br/>
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;<br/>
+}&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/App.css"&gt;/* Global styles or imports can go here */<br/>
+&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/auth/Login.css"&gt;.login-container {<br/>
+    display: flex;<br/>
+    height: 100vh;<br/>
+    width: 100%;<br/>
+    background-color: var(--bg-color);<br/>
+    color: var(--text-color);<br/>
+}<br/>
+<br/>
+/* Left components (Image side) */<br/>
+.login-left {<br/>
+    flex: 1;<br/>
+    background-image: url('/src/assets/FondoSofka_13.jpg');<br/>
+    /* Placeholder office image */<br/>
+    background-size: cover;<br/>
+    background-position: center;<br/>
+    position: relative;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    justify-content: flex-end;<br/>
+    padding: 4rem;<br/>
+    color: white;<br/>
+    background-position-x: 486px<br/>
+}<br/>
+<br/>
+.login-left::before {<br/>
+    content: '';<br/>
+    position: absolute;<br/>
+    top: 0;<br/>
+    left: 0;<br/>
+    right: 0;<br/>
+    bottom: 0;<br/>
+}<br/>
+<br/>
+.login-left .overlay {<br/>
+    position: relative;<br/>
+    z-index: 1;<br/>
+    max-width: 500px;<br/>
+}<br/>
+<br/>
+.login-left h1 {<br/>
+    font-size: 3rem;<br/>
+    font-weight: 700;<br/>
+    margin-bottom: 1rem;<br/>
+    line-height: 1.2;<br/>
+}<br/>
+<br/>
+.login-left p {<br/>
+    font-size: 1.125rem;<br/>
+    opacity: 0.9;<br/>
+}<br/>
+<br/>
+/* Right components (Form side) */<br/>
+.login-right {<br/>
+    flex: 1;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    justify-content: center;<br/>
+    align-items: center;<br/>
+    padding: 2rem;<br/>
+    position: relative;<br/>
+}<br/>
+<br/>
+.theme-toggle-container {<br/>
+    position: absolute;<br/>
+    top: 2rem;<br/>
+    right: 2rem;<br/>
+}<br/>
+<br/>
+.theme-toggle {<br/>
+    background: none;<br/>
+    border: none;<br/>
+    font-size: 1.5rem;<br/>
+    cursor: pointer;<br/>
+    padding: 0.5rem;<br/>
+    border-radius: 50%;<br/>
+    transition: background-color 0.2s;<br/>
+}<br/>
+<br/>
+.theme-toggle:hover {<br/>
+    background-color: rgba(0, 0, 0, 0.1);<br/>
+}<br/>
+<br/>
+.login-form-wrapper {<br/>
+    width: 100%;<br/>
+    max-width: 420px;<br/>
+}<br/>
+<br/>
+.logo-container {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 2rem;<br/>
+    color: var(--primary-color);<br/>
+}<br/>
+<br/>
+.logo-icon {<br/>
+    font-size: 1.5rem;<br/>
+    background-color: var(--primary-color);<br/>
+    color: white;<br/>
+    width: 40px;<br/>
+    height: 40px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    border-radius: 8px;<br/>
+}<br/>
+<br/>
+.logo-text {<br/>
+    font-weight: 700;<br/>
+    font-size: 1.25rem;<br/>
+    color: var(--text-color);<br/>
+}<br/>
+<br/>
+.login-right h2 {<br/>
+    font-size: 2rem;<br/>
+    font-weight: 700;<br/>
+    margin-bottom: 0.5rem;<br/>
+    color: var(--text-color);<br/>
+}<br/>
+<br/>
+.subtitle {<br/>
+    color: var(--secondary-color);<br/>
+    margin-bottom: 2.5rem;<br/>
+}<br/>
+<br/>
+/* Form Elements */<br/>
+.form-group {<br/>
+    margin-bottom: 1.5rem;<br/>
+}<br/>
+<br/>
+.form-group label {<br/>
+    display: block;<br/>
+    margin-bottom: 0.5rem;<br/>
+    font-weight: 500;<br/>
+    font-size: 0.9rem;<br/>
+}<br/>
+<br/>
+.label-row {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    margin-bottom: 0.5rem;<br/>
+}<br/>
+<br/>
+.label-row label {<br/>
+    margin-bottom: 0;<br/>
+}<br/>
+<br/>
+.forgot-password {<br/>
+    color: var(--primary-color);<br/>
+    text-decoration: none;<br/>
+    font-size: 0.875rem;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.input-wrapper input {<br/>
+    width: 100%;<br/>
+    padding: 0.75rem 1rem;<br/>
+    border: 1px solid var(--input-border);<br/>
+    border-radius: 8px;<br/>
+    font-size: 1rem;<br/>
+    background-color: var(--input-bg);<br/>
+    color: var(--text-color);<br/>
+    transition: border-color 0.2s;<br/>
+}<br/>
+<br/>
+.input-wrapper input:focus {<br/>
+    outline: none;<br/>
+    border-color: var(--primary-color);<br/>
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);<br/>
+}<br/>
+<br/>
+.form-check {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 2rem;<br/>
+}<br/>
+<br/>
+.btn-primary {<br/>
+    width: 100%;<br/>
+    padding: 0.875rem;<br/>
+    background-color: var(--primary-color);<br/>
+    color: white;<br/>
+    border: none;<br/>
+    border-radius: 8px;<br/>
+    font-size: 1rem;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    transition: background-color 0.2s;<br/>
+}<br/>
+<br/>
+.btn-primary:hover {<br/>
+    background-color: #0b5ed7;<br/>
+    /* Darker shade of bootstrap primary */<br/>
+}<br/>
+<br/>
+.signup-link {<br/>
+    text-align: center;<br/>
+    margin-top: 1.5rem;<br/>
+    color: var(--secondary-color);<br/>
+    font-size: 0.95rem;<br/>
+}<br/>
+<br/>
+.signup-link a {<br/>
+    color: var(--primary-color);<br/>
+    text-decoration: none;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+/* Responsive */<br/>
+@media (max-width: 768px) {<br/>
+    .login-container {<br/>
+        flex-direction: column;<br/>
+    }<br/>
+<br/>
+    .login-left {<br/>
+        display: none;<br/>
+        /* Hide image on mobile usually, or height: 200px */<br/>
+    }<br/>
+<br/>
+    .login-right {<br/>
+        padding: 1.5rem;<br/>
+    }<br/>
+}&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/signup/Signup.css"&gt;.signup-container {<br/>
+    display: flex;<br/>
+    height: 100vh;<br/>
+    width: 100%;<br/>
+    background-color: #f8f9fa;<br/>
+    /* Matches mockup light bg */<br/>
+    color: #212529;<br/>
+}<br/>
+<br/>
+/* Left components (Image background like login) */<br/>
+.signup-left {<br/>
+    flex: 1;<br/>
+    background-image: url('/src/assets/FondoSofka_13.jpg');<br/>
+    background-size: cover;<br/>
+    background-position: center;<br/>
+    background-position-x: 486px;<br/>
+    color: white;<br/>
+    padding: 4rem;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    justify-content: flex-end;<br/>
+    position: relative;<br/>
+    overflow: hidden;<br/>
+}<br/>
+<br/>
+.signup-left::before {<br/>
+    content: '';<br/>
+    position: absolute;<br/>
+    top: 0;<br/>
+    left: 0;<br/>
+    right: 0;<br/>
+    bottom: 0;<br/>
+}<br/>
+<br/>
+.signup-left .overlay {<br/>
+    position: relative;<br/>
+    z-index: 1;<br/>
+    max-width: 600px;<br/>
+}<br/>
+<br/>
+.brand {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 2rem;<br/>
+}<br/>
+<br/>
+.brand-icon {<br/>
+    font-size: 1.5rem;<br/>
+    background-color: rgba(255, 255, 255, 0.2);<br/>
+    padding: 0.5rem;<br/>
+    border-radius: 8px;<br/>
+}<br/>
+<br/>
+.brand-text {<br/>
+    font-size: 1.25rem;<br/>
+    font-weight: 700;<br/>
+}<br/>
+<br/>
+.signup-left h1 {<br/>
+    font-size: 3.5rem;<br/>
+    font-weight: 700;<br/>
+    margin-bottom: 1.5rem;<br/>
+    line-height: 1.1;<br/>
+}<br/>
+<br/>
+.signup-left p {<br/>
+    font-size: 1.25rem;<br/>
+    opacity: 0.9;<br/>
+    max-width: 500px;<br/>
+}<br/>
+<br/>
+.carousel-indicators {<br/>
+    display: flex;<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 1rem;<br/>
+}<br/>
+<br/>
+.indicator {<br/>
+    width: 10px;<br/>
+    height: 10px;<br/>
+    border-radius: 50%;<br/>
+    background-color: rgba(255, 255, 255, 0.4);<br/>
+    cursor: pointer;<br/>
+}<br/>
+<br/>
+.indicator.active {<br/>
+    background-color: white;<br/>
+    width: 20px;<br/>
+    border-radius: 10px;<br/>
+}<br/>
+<br/>
+.employee-count {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 1rem;<br/>
+    background: rgba(255, 255, 255, 0.1);<br/>
+    padding: 1rem;<br/>
+    border-radius: 12px;<br/>
+    backdrop-filter: blur(5px);<br/>
+    width: fit-content;<br/>
+}<br/>
+<br/>
+.avatars {<br/>
+    display: flex;<br/>
+}<br/>
+<br/>
+.avatars .avatar {<br/>
+    width: 30px;<br/>
+    height: 30px;<br/>
+    border-radius: 50%;<br/>
+    background-color: #ddd;<br/>
+    border: 2px solid #0d6efd;<br/>
+    margin-left: -10px;<br/>
+}<br/>
+<br/>
+.avatars .avatar:first-child {<br/>
+    margin-left: 0;<br/>
+}<br/>
+<br/>
+/* Right components (Form side) */<br/>
+.signup-right {<br/>
+    flex: 1;<br/>
+    /* Split 50/50 roughly, or maybe 40/60 */<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    justify-content: center;<br/>
+    align-items: center;<br/>
+    padding: 2rem;<br/>
+    background-color: #f8f9fa;<br/>
+    overflow-y: auto;<br/>
+}<br/>
+<br/>
+.signup-form-wrapper {<br/>
+    width: 100%;<br/>
+    max-width: 480px;<br/>
+    margin-top: 5rem;<br/>
+}<br/>
+<br/>
+.signup-right h2 {<br/>
+    font-size: 2rem;<br/>
+    font-weight: 700;<br/>
+    margin-bottom: 0.5rem;<br/>
+    color: #212529;<br/>
+}<br/>
+<br/>
+.subtitle {<br/>
+    color: #6c757d;<br/>
+    margin-bottom: 2rem;<br/>
+}<br/>
+<br/>
+/* Form Styles Reuse/Override */<br/>
+.form-group {<br/>
+    margin-bottom: 1.25rem;<br/>
+}<br/>
+<br/>
+.form-group label {<br/>
+    display: block;<br/>
+    margin-bottom: 0.5rem;<br/>
+    font-weight: 600;<br/>
+    font-size: 0.9rem;<br/>
+    color: #495057;<br/>
+}<br/>
+<br/>
+.input-wrapper {<br/>
+    position: relative;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+}<br/>
+<br/>
+.input-icon {<br/>
+    position: absolute;<br/>
+    left: 1rem;<br/>
+    color: #6c757d;<br/>
+    font-size: 1.1rem;<br/>
+}<br/>
+<br/>
+.input-wrapper input,<br/>
+.input-wrapper select {<br/>
+    width: 100%;<br/>
+    padding: 0.75rem 1rem 0.75rem 2.8rem;<br/>
+    /* Space for icon */<br/>
+    border: 1px solid #dee2e6;<br/>
+    border-radius: 8px;<br/>
+    font-size: 1rem;<br/>
+    background-color: white;<br/>
+    color: #212529;<br/>
+    transition: border-color 0.2s, box-shadow 0.2s;<br/>
+}<br/>
+<br/>
+.input-wrapper input:focus,<br/>
+.input-wrapper select:focus {<br/>
+    outline: none;<br/>
+    border-color: #0d6efd;<br/>
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);<br/>
+}<br/>
+<br/>
+.form-check {<br/>
+    display: flex;<br/>
+    align-items: flex-start;<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 1.5rem;<br/>
+    font-size: 0.9rem;<br/>
+    color: #6c757d;<br/>
+}<br/>
+<br/>
+.form-check input {<br/>
+    margin-top: 0.25rem;<br/>
+}<br/>
+<br/>
+.form-check a {<br/>
+    color: #0d6efd;<br/>
+    text-decoration: none;<br/>
+}<br/>
+<br/>
+.btn-primary {<br/>
+    width: 100%;<br/>
+    padding: 0.875rem;<br/>
+    background-color: #0d6efd;<br/>
+    color: white;<br/>
+    border: none;<br/>
+    border-radius: 8px;<br/>
+    font-size: 1rem;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    transition: background-color 0.2s;<br/>
+    margin-bottom: 1.5rem;<br/>
+}<br/>
+<br/>
+.btn-primary:hover {<br/>
+    background-color: #0b5ed7;<br/>
+}<br/>
+<br/>
+.btn-primary:disabled {<br/>
+    background-color: #6c757d;<br/>
+    cursor: not-allowed;<br/>
+}<br/>
+<br/>
+.login-link {<br/>
+    text-align: center;<br/>
+    color: #6c757d;<br/>
+    font-size: 0.95rem;<br/>
+}<br/>
+<br/>
+.login-link a {<br/>
+    color: #0d6efd;<br/>
+    text-decoration: none;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.error-message {<br/>
+    color: #dc3545;<br/>
+    background-color: rgba(220, 53, 69, 0.1);<br/>
+    padding: 0.75rem;<br/>
+    border-radius: 8px;<br/>
+    margin-bottom: 1rem;<br/>
+    font-size: 0.9rem;<br/>
+}<br/>
+<br/>
+/* Responsive */<br/>
+@media (max-width: 1200px) {<br/>
+    .signup-left {<br/>
+        background-position-x: 200px;<br/>
+    }<br/>
+<br/>
+    .signup-left h1 {<br/>
+        font-size: 2.5rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 900px) {<br/>
+    .signup-container {<br/>
+        flex-direction: column;<br/>
+    }<br/>
+<br/>
+    .signup-left {<br/>
+        min-height: 30vh;<br/>
+        background-position-x: center;<br/>
+        padding: 2rem;<br/>
+        justify-content: flex-end;<br/>
+    }<br/>
+<br/>
+    .signup-left h1 {<br/>
+        font-size: 2rem;<br/>
+    }<br/>
+<br/>
+    .signup-left p {<br/>
+        font-size: 1rem;<br/>
+    }<br/>
+<br/>
+    .signup-right {<br/>
+        padding: 1.5rem;<br/>
+    }<br/>
+<br/>
+    .signup-form-wrapper {<br/>
+        margin-top: 1rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 600px) {<br/>
+    .signup-left {<br/>
+        min-height: 20vh;<br/>
+        padding: 1.5rem;<br/>
+    }<br/>
+<br/>
+    .signup-left h1 {<br/>
+        font-size: 1.5rem;<br/>
+        margin-bottom: 0.5rem;<br/>
+    }<br/>
+<br/>
+    .signup-left p {<br/>
+        font-size: 0.9rem;<br/>
+        display: none;<br/>
+    }<br/>
+<br/>
+    .brand {<br/>
+        position: static;<br/>
+        margin-bottom: 1rem;<br/>
+    }<br/>
+<br/>
+    .signup-form-wrapper {<br/>
+        margin-top: 0.5rem;<br/>
+    }<br/>
+}&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/dashboard/ReservationModal.css"&gt;/* Modal Overlay and Container */<br/>
+.modal-overlay {<br/>
+    position: fixed;<br/>
+    top: 0;<br/>
+    left: 0;<br/>
+    right: 0;<br/>
+    bottom: 0;<br/>
+    background-color: rgba(0, 0, 0, 0.6);<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    align-items: center;<br/>
+    z-index: 1000;<br/>
+    padding: 1rem;<br/>
+    backdrop-filter: blur(4px);<br/>
+}<br/>
+<br/>
+.modal-content {<br/>
+    background-color: var(--card-bg);<br/>
+    color: var(--text-color);<br/>
+    border-radius: 16px;<br/>
+    max-width: 900px;<br/>
+    width: 100%;<br/>
+    max-height: 90vh;<br/>
+    overflow-y: auto;<br/>
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);<br/>
+    position: relative;<br/>
+    animation: modalSlideIn 0.3s ease-out;<br/>
+}<br/>
+<br/>
+@keyframes modalSlideIn {<br/>
+    from {<br/>
+        opacity: 0;<br/>
+        transform: translateY(-20px);<br/>
+    }<br/>
+<br/>
+    to {<br/>
+        opacity: 1;<br/>
+        transform: translateY(0);<br/>
+    }<br/>
+}<br/>
+<br/>
+.modal-close {<br/>
+    position: absolute;<br/>
+    top: 1rem;<br/>
+    right: 1rem;<br/>
+    background: none;<br/>
+    border: none;<br/>
+    font-size: 1.5rem;<br/>
+    cursor: pointer;<br/>
+    color: #6c757d;<br/>
+    width: 36px;<br/>
+    height: 36px;<br/>
+    border-radius: 50%;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    transition: all 0.2s;<br/>
+    z-index: 10;<br/>
+}<br/>
+<br/>
+.modal-close:hover {<br/>
+    background-color: #f1f3f5;<br/>
+    color: #212529;<br/>
+}<br/>
+<br/>
+/* Modal Header */<br/>
+.modal-header {<br/>
+    padding: 2rem;<br/>
+    border-bottom: 1px solid #f1f3f5;<br/>
+}<br/>
+<br/>
+.modal-item-info {<br/>
+    display: flex;<br/>
+    gap: 2rem;<br/>
+    align-items: center;<br/>
+}<br/>
+<br/>
+.modal-item-image {<br/>
+    width: 100px;<br/>
+    height: 100px;<br/>
+    object-fit: cover;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);<br/>
+}<br/>
+<br/>
+.modal-item-details h2 {<br/>
+    margin: 0 0 0.5rem 0;<br/>
+    font-size: 1.75rem;<br/>
+    color: var(--text-color);<br/>
+    font-weight: 700;<br/>
+}<br/>
+<br/>
+.modal-item-location,<br/>
+.modal-item-capacity {<br/>
+    margin: 0.25rem 0;<br/>
+    color: var(--text-color);<br/>
+    font-size: 1rem;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+}<br/>
+<br/>
+/* Modal Body */<br/>
+.modal-body {<br/>
+    padding: 0 2rem 2rem 2rem;<br/>
+}<br/>
+<br/>
+.modal-columns {<br/>
+    display: grid;<br/>
+    grid-template-columns: 1.2fr 1fr;<br/>
+    gap: 3rem;<br/>
+    align-items: start;<br/>
+}<br/>
+<br/>
+.modal-section {<br/>
+    margin-bottom: 2.5rem;<br/>
+}<br/>
+<br/>
+.modal-section:last-child {<br/>
+    margin-bottom: 0;<br/>
+}<br/>
+<br/>
+.modal-section h3 {<br/>
+    font-size: 0.9rem;<br/>
+    text-transform: uppercase;<br/>
+    letter-spacing: 0.05em;<br/>
+    margin-bottom: 1.5rem;<br/>
+    color: var(--text-color);<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+/* Calendar Styles */<br/>
+.calendar-container {<br/>
+    background-color: white;<br/>
+    padding: 1.5rem;<br/>
+    border: 1px solid #f1f3f5;<br/>
+    border-radius: 16px;<br/>
+    max-width: 100%;<br/>
+}<br/>
+<br/>
+.calendar-header {<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    align-items: center;<br/>
+    gap: 1rem;<br/>
+    margin-bottom: 1rem;<br/>
+}<br/>
+<br/>
+.calendar-header h3 {<br/>
+    margin: 0;<br/>
+    font-size: 1rem;<br/>
+    color: #1a1e23;<br/>
+    font-weight: 800;<br/>
+    text-transform: uppercase;<br/>
+}<br/>
+<br/>
+.calendar-nav-btn {<br/>
+    background-color: transparent;<br/>
+    border: none;<br/>
+    color: #94a3b8;<br/>
+    font-size: 1.25rem;<br/>
+    cursor: pointer;<br/>
+    transition: all 0.2s;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+}<br/>
+<br/>
+.calendar-nav-btn:hover {<br/>
+    background-color: var(--primary-color);<br/>
+    color: white;<br/>
+    border-color: var(--primary-color);<br/>
+}<br/>
+<br/>
+.calendar-weekdays {<br/>
+    display: grid;<br/>
+    grid-template-columns: repeat(7, 1fr);<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 0.5rem;<br/>
+}<br/>
+<br/>
+.calendar-weekdays div {<br/>
+    text-align: center;<br/>
+    font-weight: 600;<br/>
+    font-size: 0.75rem;<br/>
+    color: #6c757d;<br/>
+    padding: 0.35rem;<br/>
+}<br/>
+<br/>
+.calendar-grid {<br/>
+    display: grid;<br/>
+    grid-template-columns: repeat(7, 1fr);<br/>
+    gap: 0.35rem;<br/>
+}<br/>
+<br/>
+.calendar-day {<br/>
+    aspect-ratio: 1;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    border-radius: 6px;<br/>
+    font-weight: 500;<br/>
+    font-size: 0.9rem;<br/>
+    cursor: pointer;<br/>
+    transition: all 0.2s;<br/>
+    background-color: white;<br/>
+    border: 2px solid transparent;<br/>
+}<br/>
+<br/>
+.calendar-day.empty {<br/>
+    background-color: transparent;<br/>
+    cursor: default;<br/>
+}<br/>
+<br/>
+.calendar-day.available {<br/>
+    background-color: white;<br/>
+    border: 2px solid #10b981;<br/>
+    color: #065f46;<br/>
+}<br/>
+<br/>
+.calendar-day.available:hover {<br/>
+    background-color: #ecfdf5;<br/>
+    transform: translateY(-2px);<br/>
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);<br/>
+}<br/>
+<br/>
+.calendar-day.unavailable {<br/>
+    background-color: transparent;<br/>
+    color: #cbd5e1;<br/>
+    cursor: not-allowed;<br/>
+    border: none;<br/>
+}<br/>
+<br/>
+.calendar-day.unavailable::after {<br/>
+    content: 'âœ•';<br/>
+    font-size: 1rem;<br/>
+    position: absolute;<br/>
+    opacity: 0.4;<br/>
+    font-weight: 400;<br/>
+}<br/>
+<br/>
+.calendar-day.past {<br/>
+    background-color: transparent;<br/>
+    color: #e2e8f0;<br/>
+    cursor: not-allowed;<br/>
+    text-decoration: none;<br/>
+}<br/>
+<br/>
+.calendar-day.selected {<br/>
+    background-color: var(--primary-color);<br/>
+    color: white;<br/>
+    border-color: var(--primary-color);<br/>
+    font-weight: 700;<br/>
+}<br/>
+<br/>
+.calendar-legend {<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    gap: 2rem;<br/>
+    margin-top: 2rem;<br/>
+    padding-top: 1.5rem;<br/>
+    border-top: 1px solid #f1f3f5;<br/>
+}<br/>
+<br/>
+.legend-item {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    font-size: 0.7rem;<br/>
+    color: #94a3b8;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.legend-box {<br/>
+    width: 14px;<br/>
+    height: 14px;<br/>
+    border-radius: 4px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    font-size: 0.6rem;<br/>
+}<br/>
+<br/>
+.legend-box.available {<br/>
+    background-color: white;<br/>
+    border: 1px solid #dbeafe;<br/>
+}<br/>
+<br/>
+.legend-box.unavailable {<br/>
+    background-color: transparent;<br/>
+    color: #94a3b8;<br/>
+}<br/>
+<br/>
+.legend-box.selected {<br/>
+    background-color: var(--primary-color);<br/>
+}<br/>
+<br/>
+/* Duration Selector Styles */<br/>
+.duration-selector h4 {<br/>
+    font-size: 1rem;<br/>
+    margin-bottom: 1rem;<br/>
+    color: #495057;<br/>
+}<br/>
+<br/>
+.time-range-inputs {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 1.5rem;<br/>
+    margin-bottom: 1rem;<br/>
+}<br/>
+<br/>
+.time-input-group {<br/>
+    flex: 1;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    gap: 0.5rem;<br/>
+}<br/>
+<br/>
+.time-input-group label {<br/>
+    font-weight: 500;<br/>
+    font-size: 0.9rem;<br/>
+    color: #495057;<br/>
+}<br/>
+<br/>
+.time-input-group input[type="time"] {<br/>
+    padding: 0.75rem;<br/>
+    border: 1px solid #dee2e6;<br/>
+    border-radius: 8px;<br/>
+    font-size: 1rem;<br/>
+    background-color: #f8f9fa;<br/>
+    color: #1a202c;<br/>
+    width: 100%;<br/>
+    box-sizing: border-box;<br/>
+    transition: all 0.2s;<br/>
+    -webkit-appearance: none;<br/>
+    appearance: none;<br/>
+}<br/>
+<br/>
+.time-input-group input[type="time"]:focus {<br/>
+    outline: none;<br/>
+    border-color: var(--primary-color);<br/>
+    background-color: var(--card-bg);<br/>
+}<br/>
+<br/>
+.time-separator {<br/>
+    font-size: 1.5rem;<br/>
+    color: var(--primary-color);<br/>
+    margin-top: 1.5rem;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.time-info {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    padding: 0.75rem;<br/>
+    background-color: rgba(255, 140, 3, 0.1);<br/>
+    border-radius: 8px;<br/>
+    font-size: 0.85rem;<br/>
+    color: var(--primary-color);<br/>
+}<br/>
+<br/>
+.info-icon {<br/>
+    font-size: 1.1rem;<br/>
+}<br/>
+<br/>
+/* ===== Time Slots / Availability Timeline ===== */<br/>
+<br/>
+.time-conflict-warning {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    padding: 0.75rem;<br/>
+    background-color: rgba(239, 68, 68, 0.1);<br/>
+    border: 1px solid rgba(239, 68, 68, 0.3);<br/>
+    border-radius: 8px;<br/>
+    font-size: 0.85rem;<br/>
+    color: #dc2626;<br/>
+    margin-bottom: 1rem;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.conflict-icon {<br/>
+    font-size: 1.1rem;<br/>
+}<br/>
+<br/>
+.time-input-group input[type="time"].time-conflict {<br/>
+    border-color: #ef4444;<br/>
+    background-color: rgba(239, 68, 68, 0.05);<br/>
+}<br/>
+<br/>
+.time-slots-section {<br/>
+    margin: 1rem 0;<br/>
+    padding: 1rem;<br/>
+    background-color: #f8fafc;<br/>
+    border-radius: 12px;<br/>
+    border: 1px solid #e2e8f0;<br/>
+    transition: border-color 0.3s, box-shadow 0.3s;<br/>
+}<br/>
+<br/>
+.time-slots-section.slots-updated {<br/>
+    border-color: #10b981;<br/>
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);<br/>
+    animation: slotsFlash 0.6s ease-out;<br/>
+}<br/>
+<br/>
+@keyframes slotsFlash {<br/>
+    0% { background-color: rgba(16, 185, 129, 0.15); }<br/>
+    100% { background-color: #f8fafc; }<br/>
+}<br/>
+<br/>
+.slots-updated-banner {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.4rem;<br/>
+    padding: 0.45rem 0.75rem;<br/>
+    margin-bottom: 0.75rem;<br/>
+    background-color: rgba(16, 185, 129, 0.1);<br/>
+    border: 1px solid rgba(16, 185, 129, 0.3);<br/>
+    border-radius: 8px;<br/>
+    font-size: 0.75rem;<br/>
+    color: #059669;<br/>
+    font-weight: 600;<br/>
+    animation: bannerSlideIn 0.3s ease-out;<br/>
+}<br/>
+<br/>
+@keyframes bannerSlideIn {<br/>
+    from { opacity: 0; transform: translateY(-6px); }<br/>
+    to { opacity: 1; transform: translateY(0); }<br/>
+}<br/>
+<br/>
+.time-slots-header {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    margin-bottom: 0.75rem;<br/>
+}<br/>
+<br/>
+.time-slots-title {<br/>
+    font-size: 0.8rem;<br/>
+    font-weight: 600;<br/>
+    text-transform: uppercase;<br/>
+    color: #64748b;<br/>
+    letter-spacing: 0.03em;<br/>
+}<br/>
+<br/>
+.time-slots-loading {<br/>
+    font-size: 0.75rem;<br/>
+    color: #94a3b8;<br/>
+    font-style: italic;<br/>
+}<br/>
+<br/>
+.time-slots-timeline {<br/>
+    display: flex;<br/>
+    gap: 2px;<br/>
+    width: 100%;<br/>
+    overflow: visible;<br/>
+}<br/>
+<br/>
+.time-slot {<br/>
+    flex: 1;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    align-items: center;<br/>
+    gap: 4px;<br/>
+    cursor: default;<br/>
+    min-width: 0;<br/>
+    overflow: visible;<br/>
+}<br/>
+<br/>
+.time-slot-label {<br/>
+    font-size: 0.62rem;<br/>
+    color: #64748b;<br/>
+    font-weight: 600;<br/>
+    white-space: nowrap;<br/>
+    overflow: visible;<br/>
+    display: block;<br/>
+    line-height: 1.2;<br/>
+}<br/>
+<br/>
+.time-slot-bar {<br/>
+    width: 100%;<br/>
+    height: 24px;<br/>
+    border-radius: 4px;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+/* Free slot */<br/>
+.time-slot.free .time-slot-bar {<br/>
+    background-color: #d1fae5;<br/>
+    border: 1px solid #6ee7b7;<br/>
+}<br/>
+<br/>
+/* Busy/occupied slot */<br/>
+.time-slot.busy .time-slot-bar {<br/>
+    background-color: #fecaca;<br/>
+    border: 1px solid #f87171;<br/>
+    background-image: repeating-linear-gradient(<br/>
+        45deg,<br/>
+        transparent,<br/>
+        transparent 3px,<br/>
+        rgba(239, 68, 68, 0.15) 3px,<br/>
+        rgba(239, 68, 68, 0.15) 6px<br/>
+    );<br/>
+}<br/>
+<br/>
+/* Selected slot (user's chosen range) */<br/>
+.time-slot.selected .time-slot-bar {<br/>
+    background-color: rgba(255, 140, 3, 0.25);<br/>
+    border: 1px solid var(--primary-color);<br/>
+}<br/>
+<br/>
+/* Conflict: selected + busy overlap */<br/>
+.time-slot.conflict .time-slot-bar {<br/>
+    background-color: #fca5a5;<br/>
+    border: 2px solid #ef4444;<br/>
+    animation: pulseConflict 1.5s ease-in-out infinite;<br/>
+}<br/>
+<br/>
+@keyframes pulseConflict {<br/>
+    0%, 100% { opacity: 1; }<br/>
+    50% { opacity: 0.65; }<br/>
+}<br/>
+<br/>
+/* Slots legend */<br/>
+.time-slots-legend {<br/>
+    display: flex;<br/>
+    gap: 1.25rem;<br/>
+    margin-top: 0.75rem;<br/>
+    padding-top: 0.75rem;<br/>
+    border-top: 1px solid #e2e8f0;<br/>
+}<br/>
+<br/>
+.slot-legend-item {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.4rem;<br/>
+    font-size: 0.7rem;<br/>
+    color: #64748b;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.slot-legend-box {<br/>
+    width: 14px;<br/>
+    height: 14px;<br/>
+    border-radius: 3px;<br/>
+}<br/>
+<br/>
+.slot-legend-box.free {<br/>
+    background-color: #d1fae5;<br/>
+    border: 1px solid #6ee7b7;<br/>
+}<br/>
+<br/>
+.slot-legend-box.busy {<br/>
+    background-color: #fecaca;<br/>
+    border: 1px solid #f87171;<br/>
+}<br/>
+<br/>
+.slot-legend-box.selected {<br/>
+    background-color: rgba(255, 140, 3, 0.25);<br/>
+    border: 1px solid var(--primary-color);<br/>
+}<br/>
+<br/>
+/* Busy slots detail tags */<br/>
+.busy-slots-detail {<br/>
+    display: flex;<br/>
+    flex-wrap: wrap;<br/>
+    align-items: center;<br/>
+    gap: 0.5rem;<br/>
+    margin-top: 0.75rem;<br/>
+    padding-top: 0.75rem;<br/>
+    border-top: 1px solid #e2e8f0;<br/>
+}<br/>
+<br/>
+.busy-detail-title {<br/>
+    font-size: 0.75rem;<br/>
+    color: #64748b;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.busy-slot-tag {<br/>
+    display: inline-flex;<br/>
+    align-items: center;<br/>
+    padding: 0.2rem 0.6rem;<br/>
+    background-color: #fef2f2;<br/>
+    border: 1px solid #fecaca;<br/>
+    border-radius: 6px;<br/>
+    font-size: 0.75rem;<br/>
+    color: #dc2626;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+/* ===== End Time Slots ===== */<br/>
+<br/>
+/* Custom Multi-Select Dropdown */<br/>
+.equipment-selector {<br/>
+    position: relative;<br/>
+    width: 100%;<br/>
+}<br/>
+<br/>
+.custom-select {<br/>
+    width: 100%;<br/>
+    min-height: 64px;<br/>
+    padding: 0.5rem;<br/>
+    border: 1px solid #e9ecef;<br/>
+    border-radius: 12px;<br/>
+    background-color: white;<br/>
+    cursor: pointer;<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    transition: all 0.2s;<br/>
+    position: relative;<br/>
+}<br/>
+<br/>
+.custom-select:hover {<br/>
+    border-color: var(--primary-color);<br/>
+}<br/>
+<br/>
+.custom-select.open {<br/>
+    border-color: var(--primary-color);<br/>
+    box-shadow: 0 0 0 4px rgba(255, 140, 3, 0.1);<br/>
+}<br/>
+<br/>
+.select-inner {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    gap: 0.25rem;<br/>
+    flex: 1;<br/>
+}<br/>
+<br/>
+.equipment-label-inner {<br/>
+    display: block;<br/>
+    font-size: 0.7rem;<br/>
+    text-transform: uppercase;<br/>
+    color: #94a3b8;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.selected-values {<br/>
+    display: flex;<br/>
+    flex-wrap: wrap;<br/>
+    gap: 0.5rem;<br/>
+    width: 100%;<br/>
+    max-height: 80px;<br/>
+    overflow-y: auto;<br/>
+}<br/>
+<br/>
+/* Hide scrollbar */<br/>
+.selected-values::-webkit-scrollbar {<br/>
+    width: 3px;<br/>
+}<br/>
+<br/>
+.selected-values::-webkit-scrollbar-thumb {<br/>
+    background: #e2e8f0;<br/>
+    border-radius: 4px;<br/>
+}<br/>
+<br/>
+.placeholder {<br/>
+    color: #cbd5e1;<br/>
+    font-size: 1rem;<br/>
+    font-weight: 400;<br/>
+}<br/>
+<br/>
+.selected-tag {<br/>
+    background-color: rgba(255, 140, 3, 0.1);<br/>
+    color: var(--primary-color);<br/>
+    padding: 0.2rem 0.6rem;<br/>
+    border-radius: 6px;<br/>
+    font-size: 0.8rem;<br/>
+    font-weight: 500;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.4rem;<br/>
+    max-width: 100%;<br/>
+}<br/>
+<br/>
+.selected-tag span:first-child {<br/>
+    overflow: hidden;<br/>
+    text-overflow: ellipsis;<br/>
+    white-space: nowrap;<br/>
+}<br/>
+<br/>
+.remove-tag {<br/>
+    font-size: 0.65rem;<br/>
+    opacity: 0.6;<br/>
+}<br/>
+<br/>
+.select-icon-group {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+}<br/>
+<br/>
+.equipment-main-icon {<br/>
+    font-size: 1.25rem;<br/>
+    opacity: 0.6;<br/>
+}<br/>
+<br/>
+.select-arrow {<br/>
+    width: 1.25rem;<br/>
+    height: 1.25rem;<br/>
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%233b82f6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");<br/>
+    background-repeat: no-repeat;<br/>
+    background-position: center;<br/>
+    transition: transform 0.2s;<br/>
+}<br/>
+<br/>
+.custom-select.open .select-arrow {<br/>
+    transform: rotate(180deg);<br/>
+}<br/>
+<br/>
+.options-dropdown {<br/>
+    position: absolute;<br/>
+    top: calc(100% + 4px);<br/>
+    left: 0;<br/>
+    right: 0;<br/>
+    background-color: white;<br/>
+    border: 1px solid #e9ecef;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);<br/>
+    z-index: 100;<br/>
+    max-height: 200px;<br/>
+    overflow-y: auto;<br/>
+    padding: 0.4rem;<br/>
+}<br/>
+<br/>
+.option-item {<br/>
+    padding: 0.6rem 0.85rem;<br/>
+    border-radius: 8px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    cursor: pointer;<br/>
+    transition: all 0.2s;<br/>
+    font-size: 0.9rem;<br/>
+    color: #1a1e23;<br/>
+}<br/>
+<br/>
+.option-item:hover {<br/>
+    background-color: #f8fafc;<br/>
+}<br/>
+<br/>
+.option-item.selected {<br/>
+    background-color: rgba(255, 140, 3, 0.1);<br/>
+    color: var(--primary-color);<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+.option-item.disabled {<br/>
+    opacity: 0.5;<br/>
+    cursor: not-allowed;<br/>
+    background-color: transparent;<br/>
+}<br/>
+<br/>
+.option-checkbox {<br/>
+    width: 18px;<br/>
+    height: 18px;<br/>
+    border: 2px solid #cbd5e1;<br/>
+    border-radius: 4px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    font-size: 0.8rem;<br/>
+    background-color: white;<br/>
+}<br/>
+<br/>
+.option-item.selected .option-checkbox {<br/>
+    background-color: #2563eb;<br/>
+    border-color: #2563eb;<br/>
+    color: white;<br/>
+}<br/>
+<br/>
+.not-available {<br/>
+    font-size: 0.8rem;<br/>
+    color: #94a3b8;<br/>
+    font-style: italic;<br/>
+    margin-left: 0.5rem;<br/>
+}<br/>
+<br/>
+/* Modal Footer */<br/>
+.modal-footer {<br/>
+    padding: 1.5rem 2rem;<br/>
+    display: flex;<br/>
+    justify-content: flex-end;<br/>
+    align-items: center;<br/>
+    gap: 1.5rem;<br/>
+    border-top: 1px solid #f1f3f5;<br/>
+    flex-wrap: wrap;<br/>
+}<br/>
+<br/>
+.modal-error {<br/>
+    flex: 1 1 100%;<br/>
+    padding: 0.6rem 1rem;<br/>
+    background-color: rgba(239, 68, 68, 0.08);<br/>
+    border: 1px solid rgba(239, 68, 68, 0.2);<br/>
+    border-radius: 8px;<br/>
+    font-size: 0.85rem;<br/>
+    color: #dc2626;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.modal-success {<br/>
+    flex: 1 1 100%;<br/>
+    padding: 0.6rem 1rem;<br/>
+    background-color: rgba(16, 185, 129, 0.08);<br/>
+    border: 1px solid rgba(16, 185, 129, 0.3);<br/>
+    border-radius: 8px;<br/>
+    font-size: 0.85rem;<br/>
+    color: #059669;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.btn-cancel {<br/>
+    background: transparent;<br/>
+    color: #5f6671;<br/>
+    font-weight: 600;<br/>
+    border: none;<br/>
+    cursor: pointer;<br/>
+    font-size: 1rem;<br/>
+}<br/>
+<br/>
+.btn-confirm {<br/>
+    background-color: var(--primary-color);<br/>
+    color: white;<br/>
+    padding: 0.85rem 2rem;<br/>
+    border-radius: 10px;<br/>
+    font-weight: 600;<br/>
+    border: none;<br/>
+    cursor: pointer;<br/>
+    font-size: 1rem;<br/>
+    transition: all 0.2s;<br/>
+    box-shadow: 0 4px 12px rgba(255, 140, 3, 0.2);<br/>
+}<br/>
+<br/>
+.btn-confirm:hover:not(:disabled) {<br/>
+    background-color: var(--primary-hover);<br/>
+    transform: translateY(-1px);<br/>
+}<br/>
+<br/>
+.btn-confirm:disabled {<br/>
+    background-color: #94a3b8;<br/>
+    box-shadow: none;<br/>
+    cursor: not-allowed;<br/>
+}<br/>
+<br/>
+/* Success & Error banners */<br/>
+.modal-success-banner {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    padding: 1rem 1rem;<br/>
+    background-color: rgba(16, 185, 129, 0.1);<br/>
+    border: 1px solid rgba(16, 185, 129, 0.3);<br/>
+    border-radius: 10px;<br/>
+    font-size: 0.85rem;<br/>
+    color: #059669;<br/>
+    font-weight: 400;<br/>
+    margin-bottom: 1rem;<br/>
+    animation: bannerSlideIn 0.3s ease-out;<br/>
+}<br/>
+<br/>
+.modal-success-banner .success-icon {<br/>
+    font-size: 1.25rem;<br/>
+}<br/>
+<br/>
+.modal-error-banner {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    padding: 1rem 1.25rem;<br/>
+    background-color: rgba(239, 68, 68, 0.1);<br/>
+    border: 1px solid rgba(239, 68, 68, 0.3);<br/>
+    border-radius: 10px;<br/>
+    font-size: 0.95rem;<br/>
+    color: #dc2626;<br/>
+    font-weight: 500;<br/>
+    margin-bottom: 1.5rem;<br/>
+    animation: bannerSlideIn 0.3s ease-out;<br/>
+}<br/>
+<br/>
+.modal-error-banner .error-icon {<br/>
+    font-size: 1.25rem;<br/>
+}<br/>
+<br/>
+@keyframes bannerSlideIn {<br/>
+    from {<br/>
+        opacity: 0;<br/>
+        transform: translateY(-8px);<br/>
+    }<br/>
+    to {<br/>
+        opacity: 1;<br/>
+        transform: translateY(0);<br/>
+    }<br/>
+}<br/>
+<br/>
+/* Responsive */<br/>
+@media (max-width: 900px) {<br/>
+    .modal-columns {<br/>
+        grid-template-columns: 1fr;<br/>
+        gap: 2rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 768px) {<br/>
+    .modal-overlay {<br/>
+        padding: 0.5rem;<br/>
+        align-items: flex-end;<br/>
+    }<br/>
+<br/>
+    .modal-content {<br/>
+        max-height: 95vh;<br/>
+        border-radius: 16px 16px 0 0;<br/>
+    }<br/>
+<br/>
+    .modal-header {<br/>
+        padding: 1.25rem 1.25rem 1rem;<br/>
+    }<br/>
+<br/>
+    .modal-item-info {<br/>
+        gap: 1rem;<br/>
+    }<br/>
+<br/>
+    .modal-item-image {<br/>
+        width: 72px;<br/>
+        height: 72px;<br/>
+        border-radius: 10px;<br/>
+    }<br/>
+<br/>
+    .modal-item-details h2 {<br/>
+        font-size: 1.3rem;<br/>
+    }<br/>
+<br/>
+    .modal-body {<br/>
+        padding: 0 1.25rem 1.25rem;<br/>
+    }<br/>
+<br/>
+    .modal-columns {<br/>
+        gap: 1.5rem;<br/>
+    }<br/>
+<br/>
+    .modal-section {<br/>
+        margin-bottom: 1.5rem;<br/>
+    }<br/>
+<br/>
+    .modal-section h3 {<br/>
+        margin-bottom: 1rem;<br/>
+    }<br/>
+<br/>
+    .modal-footer {<br/>
+        padding: 1rem 1.25rem;<br/>
+        gap: 1rem;<br/>
+    }<br/>
+<br/>
+    .btn-confirm {<br/>
+        padding: 0.75rem 1.5rem;<br/>
+        font-size: 0.95rem;<br/>
+    }<br/>
+<br/>
+    /* Calendar responsive */<br/>
+    .calendar-container {<br/>
+        padding: 1rem;<br/>
+    }<br/>
+<br/>
+    .calendar-legend {<br/>
+        gap: 1rem;<br/>
+        flex-wrap: wrap;<br/>
+        justify-content: center;<br/>
+    }<br/>
+<br/>
+    /* Time slots responsive */<br/>
+    .time-slots-legend {<br/>
+        gap: 0.75rem;<br/>
+        flex-wrap: wrap;<br/>
+    }<br/>
+<br/>
+    .time-slot-label {<br/>
+        font-size: 0.5rem;<br/>
+    }<br/>
+<br/>
+    /* Success/Error banners */<br/>
+    .modal-success-banner,<br/>
+    .modal-error-banner {<br/>
+        padding: 0.75rem 1rem;<br/>
+        font-size: 0.85rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 480px) {<br/>
+    .modal-overlay {<br/>
+        padding: 0;<br/>
+    }<br/>
+<br/>
+    .modal-content {<br/>
+        max-height: 100vh;<br/>
+        max-height: 100dvh;<br/>
+        border-radius: 0;<br/>
+    }<br/>
+<br/>
+    .modal-header {<br/>
+        padding: 1rem;<br/>
+    }<br/>
+<br/>
+    .modal-item-info {<br/>
+        flex-direction: column;<br/>
+        align-items: flex-start;<br/>
+        gap: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .modal-item-image {<br/>
+        width: 60px;<br/>
+        height: 60px;<br/>
+    }<br/>
+<br/>
+    .modal-item-details h2 {<br/>
+        font-size: 1.15rem;<br/>
+    }<br/>
+<br/>
+    .modal-item-location,<br/>
+    .modal-item-capacity {<br/>
+        font-size: 0.85rem;<br/>
+    }<br/>
+<br/>
+    .modal-body {<br/>
+        padding: 0 1rem 1rem;<br/>
+    }<br/>
+<br/>
+    .modal-section h3 {<br/>
+        font-size: 0.8rem;<br/>
+        margin-bottom: 0.75rem;<br/>
+    }<br/>
+<br/>
+    /* Time inputs stacked on small screens */<br/>
+    .time-range-inputs {<br/>
+        flex-direction: column;<br/>
+        gap: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .time-separator {<br/>
+        margin-top: 0;<br/>
+        transform: rotate(90deg);<br/>
+        font-size: 1.25rem;<br/>
+    }<br/>
+<br/>
+    .time-input-group input[type="time"] {<br/>
+        padding: 0.6rem;<br/>
+        font-size: 0.95rem;<br/>
+    }<br/>
+<br/>
+    /* Time slots: hide labels on very small screens */<br/>
+    .time-slot-label {<br/>
+        display: none;<br/>
+    }<br/>
+<br/>
+    .time-slot-bar {<br/>
+        height: 20px;<br/>
+    }<br/>
+<br/>
+    .time-slots-section {<br/>
+        padding: 0.75rem;<br/>
+    }<br/>
+<br/>
+    /* Calendar compact */<br/>
+    .calendar-container {<br/>
+        padding: 0.75rem;<br/>
+        border-radius: 12px;<br/>
+    }<br/>
+<br/>
+    .calendar-day {<br/>
+        font-size: 0.8rem;<br/>
+    }<br/>
+<br/>
+    .calendar-grid {<br/>
+        gap: 0.2rem;<br/>
+    }<br/>
+<br/>
+    .calendar-legend {<br/>
+        gap: 0.75rem;<br/>
+        margin-top: 1rem;<br/>
+        padding-top: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .legend-item {<br/>
+        font-size: 0.6rem;<br/>
+    }<br/>
+<br/>
+    /* Equipment dropdown compact */<br/>
+    .custom-select {<br/>
+        min-height: 56px;<br/>
+    }<br/>
+<br/>
+    .selected-tag {<br/>
+        font-size: 0.72rem;<br/>
+        padding: 0.15rem 0.5rem;<br/>
+    }<br/>
+<br/>
+    /* Footer responsive */<br/>
+    .modal-footer {<br/>
+        padding: 0.75rem 1rem;<br/>
+        flex-direction: column-reverse;<br/>
+        gap: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .btn-confirm {<br/>
+        width: 100%;<br/>
+        text-align: center;<br/>
+        padding: 0.85rem;<br/>
+    }<br/>
+<br/>
+    .btn-cancel {<br/>
+        width: 100%;<br/>
+        text-align: center;<br/>
+        padding: 0.6rem;<br/>
+    }<br/>
+<br/>
+    /* Banners compact */<br/>
+    .modal-success-banner,<br/>
+    .modal-error-banner {<br/>
+        padding: 0.6rem 0.75rem;<br/>
+        font-size: 0.8rem;<br/>
+        gap: 0.5rem;<br/>
+        margin-bottom: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .modal-success-banner .success-icon,<br/>
+    .modal-error-banner .error-icon {<br/>
+        font-size: 1rem;<br/>
+    }<br/>
+<br/>
+    .time-info {<br/>
+        font-size: 0.78rem;<br/>
+        padding: 0.6rem;<br/>
+    }<br/>
+<br/>
+    .time-conflict-warning {<br/>
+        font-size: 0.78rem;<br/>
+        padding: 0.6rem;<br/>
+    }<br/>
+<br/>
+    .busy-slots-detail {<br/>
+        gap: 0.35rem;<br/>
+    }<br/>
+<br/>
+    .busy-slot-tag {<br/>
+        font-size: 0.68rem;<br/>
+        padding: 0.15rem 0.45rem;<br/>
+    }<br/>
+<br/>
+    /* Close button */<br/>
+    .modal-close {<br/>
+        top: 0.5rem;<br/>
+        right: 0.5rem;<br/>
+        width: 32px;<br/>
+        height: 32px;<br/>
+        font-size: 1.25rem;<br/>
+    }<br/>
+}<br/>
+&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/common/Pagination.css"&gt;.pagination {<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    align-items: center;<br/>
+    margin-top: 2rem;<br/>
+    gap: 0.5rem;<br/>
+}<br/>
+<br/>
+.pagination-btn {<br/>
+    padding: 0.5rem 1rem;<br/>
+    border: 1px solid #ddd;<br/>
+    background-color: white;<br/>
+    cursor: pointer;<br/>
+    border-radius: 4px;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.pagination-btn:hover:not(:disabled) {<br/>
+    background-color: #f0f0f0;<br/>
+    border-color: #ccc;<br/>
+}<br/>
+<br/>
+.pagination-btn:disabled {<br/>
+    opacity: 0.5;<br/>
+    cursor: not-allowed;<br/>
+    background-color: #f9f9f9;<br/>
+}<br/>
+<br/>
+.pagination-numbers {<br/>
+    display: flex;<br/>
+    gap: 0.25rem;<br/>
+}<br/>
+<br/>
+.pagination-number {<br/>
+    width: 35px;<br/>
+    height: 35px;<br/>
+    border: 1px solid #ddd;<br/>
+    background-color: white;<br/>
+    cursor: pointer;<br/>
+    border-radius: 4px;<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    align-items: center;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.pagination-number:hover {<br/>
+    background-color: #f0f0f0;<br/>
+    border-color: #ccc;<br/>
+}<br/>
+<br/>
+.pagination-number.active {<br/>
+    background-color: #007bff;<br/>
+    color: white;<br/>
+    border-color: #007bff;<br/>
+}<br/>
+&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/dashboard/Dashboard.css"&gt;/* Dashboard Layout specific */<br/>
+.dashboard-container {<br/>
+    width: 100%;<br/>
+    /* Background handled by MainLayout */<br/>
+}<br/>
+<br/>
+.dashboard-main {<br/>
+    width: 100%;<br/>
+    box-sizing: border-box;<br/>
+    /* Padding handled by MainLayout .main-content usually, but keeping it if needed or reset */<br/>
+}<br/>
+<br/>
+/* Dashboard Content */<br/>
+.dashboard-content {<br/>
+    display: flex;<br/>
+    gap: 2rem;<br/>
+}<br/>
+<br/>
+.dashboard-results-section {<br/>
+    flex: 3;<br/>
+}<br/>
+<br/>
+.dashboard-sidebar {<br/>
+    flex: 1;<br/>
+    min-width: 300px;<br/>
+}<br/>
+<br/>
+/* Results Area */<br/>
+.results-header {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    margin-bottom: 1.5rem;<br/>
+}<br/>
+<br/>
+.results-header h2 {<br/>
+    font-size: 1.25rem;<br/>
+    margin: 0;<br/>
+}<br/>
+<br/>
+.results-count {<br/>
+    color: #6c757d;<br/>
+    font-weight: 400;<br/>
+    font-size: 1rem;<br/>
+}<br/>
+<br/>
+.results-grid {<br/>
+    display: grid;<br/>
+    grid-template-columns: repeat(3, 1fr);<br/>
+    gap: 1.5rem;<br/>
+}<br/>
+<br/>
+/* Item Card Styles are now in ItemCard component or here? <br/>
+   ItemCard styles (item-card class) were in Dashboard.css. <br/>
+   I'll keep them here as they are dashboard specific. <br/>
+*/<br/>
+<br/>
+/* Item Card */<br/>
+.item-card {<br/>
+    background-color: white;<br/>
+    border-radius: 12px;<br/>
+    overflow: hidden;<br/>
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);<br/>
+    transition: transform 0.2s, box-shadow 0.2s;<br/>
+    border: 1px solid transparent;<br/>
+}<br/>
+<br/>
+.item-card:hover {<br/>
+    transform: translateY(-4px);<br/>
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);<br/>
+    border-color: #dee2e6;<br/>
+}<br/>
+<br/>
+.item-image-container {<br/>
+    height: 180px;<br/>
+    position: relative;<br/>
+    background-color: #e9ecef;<br/>
+}<br/>
+<br/>
+.item-image {<br/>
+    width: 100%;<br/>
+    height: 100%;<br/>
+    object-fit: cover;<br/>
+}<br/>
+<br/>
+.status-badge {<br/>
+    position: absolute;<br/>
+    top: 1rem;<br/>
+    left: 1rem;<br/>
+    background-color: #d1e7dd;<br/>
+    color: #0f5132;<br/>
+    padding: 0.25rem 0.75rem;<br/>
+    border-radius: 100px;<br/>
+    font-size: 0.75rem;<br/>
+    font-weight: 700;<br/>
+}<br/>
+<br/>
+.item-content {<br/>
+    padding: 1.25rem;<br/>
+}<br/>
+<br/>
+.item-header {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: flex-start;<br/>
+    margin-bottom: 0.5rem;<br/>
+}<br/>
+<br/>
+.item-header h3 {<br/>
+    margin: 0;<br/>
+    font-size: 1.1rem;<br/>
+    font-weight: 700;<br/>
+    color: #212529;<br/>
+}<br/>
+<br/>
+.item-capacity,<br/>
+.item-category {<br/>
+    font-size: 0.8rem;<br/>
+    color: #6c757d;<br/>
+    background-color: #f8f9fa;<br/>
+    padding: 0.25rem 0.5rem;<br/>
+    border-radius: 4px;<br/>
+}<br/>
+<br/>
+.item-location {<br/>
+    font-size: 0.9rem;<br/>
+    color: #6c757d;<br/>
+    margin-bottom: 1rem;<br/>
+}<br/>
+<br/>
+.item-tags {<br/>
+    display: flex;<br/>
+    flex-wrap: wrap;<br/>
+    gap: 0.5rem;<br/>
+    margin-bottom: 1.5rem;<br/>
+}<br/>
+<br/>
+.tag {<br/>
+    font-size: 0.75rem;<br/>
+    background-color: #f8f9fa;<br/>
+    border: 1px solid #e9ecef;<br/>
+    padding: 0.25rem 0.5rem;<br/>
+    border-radius: 4px;<br/>
+    color: #495057;<br/>
+}<br/>
+<br/>
+.btn-book {<br/>
+    width: 100%;<br/>
+    padding: 0.75rem;<br/>
+    background-color: var(--primary-color);<br/>
+    color: white;<br/>
+    border: none;<br/>
+    border-radius: 8px;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    transition: background-color 0.2s;<br/>
+}<br/>
+<br/>
+.btn-book:hover {<br/>
+    background-color: var(--primary-hover);<br/>
+}<br/>
+<br/>
+.btn-book.secondary {<br/>
+    background-color: #f1f3f5;<br/>
+    color: #495057;<br/>
+    cursor: default;<br/>
+}<br/>
+<br/>
+/* Search Bar Styles */<br/>
+.search-bar-container {<br/>
+    background-color: white;<br/>
+    padding: 1rem;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 1.5rem;<br/>
+    margin-bottom: 2rem;<br/>
+    flex-wrap: wrap;<br/>
+}<br/>
+<br/>
+.search-input-wrapper {<br/>
+    flex: 1;<br/>
+    position: relative;<br/>
+    min-width: 200px;<br/>
+    max-width: 100%;<br/>
+}<br/>
+<br/>
+.search-icon {<br/>
+    position: absolute;<br/>
+    left: 1rem;<br/>
+    top: 50%;<br/>
+    transform: translateY(-50%);<br/>
+    color: #adb5bd;<br/>
+}<br/>
+<br/>
+.search-input {<br/>
+    width: 100%;<br/>
+    padding: 0.75rem 1rem 0.75rem 2.8rem;<br/>
+    border: 1px solid #dee2e6;<br/>
+    border-radius: 8px;<br/>
+    background-color: #f8f9fa;<br/>
+    font-size: 1rem;<br/>
+    box-sizing: border-box;<br/>
+}<br/>
+<br/>
+/* Sidebar Components */<br/>
+.filter-sidebar,<br/>
+.help-banner {<br/>
+    background-color: white;<br/>
+    padding: 1.5rem;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);<br/>
+    margin-bottom: 1.5rem;<br/>
+}<br/>
+<br/>
+.filter-section:not(:last-child) {<br/>
+    margin-bottom: 2rem;<br/>
+}<br/>
+<br/>
+.filter-section h3 {<br/>
+    font-size: 0.8rem;<br/>
+    text-transform: uppercase;<br/>
+    color: #adb5bd;<br/>
+    margin-bottom: 1rem;<br/>
+    letter-spacing: 0.5px;<br/>
+}<br/>
+<br/>
+.checkbox-group {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    gap: 0.75rem;<br/>
+}<br/>
+<br/>
+.checkbox-label {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    font-size: 0.95rem;<br/>
+    color: #495057;<br/>
+    cursor: pointer;<br/>
+}<br/>
+<br/>
+.help-banner {<br/>
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);<br/>
+    color: white;<br/>
+    position: relative;<br/>
+    overflow: hidden;<br/>
+}<br/>
+<br/>
+.help-banner h3 {<br/>
+    font-size: 1.1rem;<br/>
+    margin-bottom: 0.5rem;<br/>
+    position: relative;<br/>
+    z-index: 1;<br/>
+}<br/>
+<br/>
+.help-banner p {<br/>
+    font-size: 0.9rem;<br/>
+    opacity: 0.9;<br/>
+    margin-bottom: 1.5rem;<br/>
+    position: relative;<br/>
+    z-index: 1;<br/>
+}<br/>
+<br/>
+.btn-contact {<br/>
+    background-color: white;<br/>
+    color: #0d6efd;<br/>
+    border: none;<br/>
+    padding: 0.6rem 1.25rem;<br/>
+    border-radius: 6px;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    width: 100%;<br/>
+    position: relative;<br/>
+    z-index: 1;<br/>
+}<br/>
+<br/>
+.help-bg-icon {<br/>
+    position: absolute;<br/>
+    bottom: -1rem;<br/>
+    right: -1rem;<br/>
+    font-size: 5rem;<br/>
+    opacity: 0.2;<br/>
+    transform: rotate(-15deg);<br/>
+}<br/>
+<br/>
+/* Responsive Dashboard */<br/>
+@media (max-width: 1024px) {<br/>
+    .results-grid {<br/>
+        grid-template-columns: repeat(2, 1fr);<br/>
+        gap: 1.25rem;<br/>
+    }<br/>
+<br/>
+    .search-bar-container {<br/>
+        gap: 1rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 900px) {<br/>
+    .dashboard-content {<br/>
+        flex-direction: column;<br/>
+    }<br/>
+<br/>
+    .dashboard-sidebar {<br/>
+        order: -1;<br/>
+        min-width: unset;<br/>
+    }<br/>
+<br/>
+    .results-grid {<br/>
+        grid-template-columns: repeat(2, 1fr);<br/>
+    }<br/>
+<br/>
+    .search-input-wrapper {<br/>
+        min-width: 100%;<br/>
+        width: 100%;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 768px) {<br/>
+    .search-bar-container {<br/>
+        padding: 0.75rem;<br/>
+        gap: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .results-header {<br/>
+        flex-direction: column;<br/>
+        align-items: flex-start;<br/>
+        gap: 1rem;<br/>
+    }<br/>
+<br/>
+    .results-header h2 {<br/>
+        font-size: 1.1rem;<br/>
+    }<br/>
+<br/>
+    .results-grid {<br/>
+        grid-template-columns: 1fr;<br/>
+        gap: 1rem;<br/>
+    }<br/>
+<br/>
+    .item-image-container {<br/>
+        height: 200px;<br/>
+    }<br/>
+<br/>
+    .filter-sidebar,<br/>
+    .help-banner {<br/>
+        padding: 1rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 480px) {<br/>
+    .search-bar-container {<br/>
+        padding: 0.5rem;<br/>
+    }<br/>
+<br/>
+    .search-input {<br/>
+        font-size: 0.9rem;<br/>
+        padding: 0.65rem 1rem 0.65rem 2.5rem;<br/>
+    }<br/>
+<br/>
+    .results-header h2 {<br/>
+        font-size: 1rem;<br/>
+    }<br/>
+<br/>
+    .results-count {<br/>
+        font-size: 0.9rem;<br/>
+    }<br/>
+<br/>
+    .item-card {<br/>
+        border-radius: 8px;<br/>
+    }<br/>
+<br/>
+    .item-image-container {<br/>
+        height: 180px;<br/>
+    }<br/>
+<br/>
+    .item-content {<br/>
+        padding: 1rem;<br/>
+    }<br/>
+<br/>
+    .item-header h3 {<br/>
+        font-size: 1rem;<br/>
+    }<br/>
+<br/>
+    .btn-book {<br/>
+        padding: 0.65rem;<br/>
+        font-size: 0.95rem;<br/>
+    }<br/>
+<br/>
+    .help-banner h3 {<br/>
+        font-size: 1rem;<br/>
+    }<br/>
+<br/>
+    .help-banner p {<br/>
+        font-size: 0.85rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+/* Error State */<br/>
+.error-banner {<br/>
+    background-color: #fff5f5;<br/>
+    border: 1px solid #feb2b2;<br/>
+    color: #c53030;<br/>
+    padding: 1rem;<br/>
+    border-radius: 8px;<br/>
+    margin-bottom: 2rem;<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+}<br/>
+<br/>
+.error-banner p {<br/>
+    margin: 0;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.btn-retry {<br/>
+    background-color: #c53030;<br/>
+    color: white;<br/>
+    border: none;<br/>
+    padding: 0.5rem 1rem;<br/>
+    border-radius: 6px;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    transition: background-color 0.2s;<br/>
+}<br/>
+<br/>
+.btn-retry:hover {<br/>
+    background-color: #9b2c2c;<br/>
+}<br/>
+<br/>
+/* Loading State */<br/>
+.loading-state {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    padding: 4rem 1rem;<br/>
+    color: #4a5568;<br/>
+}<br/>
+<br/>
+.spinner {<br/>
+    width: 40px;<br/>
+    height: 40px;<br/>
+    border: 4px solid #e2e8f0;<br/>
+    border-top: 4px solid #3182ce;<br/>
+    border-radius: 50%;<br/>
+    animation: spin 1s linear infinite;<br/>
+    margin-bottom: 1rem;<br/>
+}<br/>
+<br/>
+@keyframes spin {<br/>
+    0% { transform: rotate(0deg); }<br/>
+    100% { transform: rotate(360deg); }<br/>
+}<br/>
+<br/>
+.no-results {<br/>
+    text-align: center;<br/>
+    padding: 3rem 1rem;<br/>
+    color: #718096;<br/>
+}<br/>
+<br/>
+.btn-clear-filters {<br/>
+    background: none;<br/>
+    border: 1px solid #cbd5e0;<br/>
+    color: #4a5568;<br/>
+    padding: 0.5rem 1.5rem;<br/>
+    border-radius: 6px;<br/>
+    margin-top: 1rem;<br/>
+    cursor: pointer;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.btn-clear-filters:hover {<br/>
+    background-color: #f7fafc;<br/>
+}&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/common/Header.css"&gt;/* Header Styles */<br/>
+.dashboard-header {<br/>
+    padding: 1rem 0;<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    position: sticky;<br/>
+    top: 10px;<br/>
+    z-index: 100;<br/>
+    width: 100%;<br/>
+    box-sizing: border-box;<br/>
+}<br/>
+<br/>
+.dashboard-header .container {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    background-color: var(--card-bg);<br/>
+    padding: 1rem 2rem;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);<br/>
+}<br/>
+<br/>
+.header-left,<br/>
+.header-right {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 1.5rem;<br/>
+}<br/>
+<br/>
+.header-logo {<br/>
+    height: 48px;<br/>
+    width: auto;<br/>
+    object-fit: contain;<br/>
+}<br/>
+<br/>
+.logo-text {<br/>
+    font-size: 1.25rem;<br/>
+    font-weight: 700;<br/>
+    color: var(--text-color);<br/>
+    margin: 0;<br/>
+}<br/>
+<br/>
+.header-nav a {<br/>
+    color: var(--text-color);<br/>
+    text-decoration: none;<br/>
+    font-weight: 500;<br/>
+    padding: 0.5rem 1rem;<br/>
+    border-radius: 6px;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.header-nav a.active,<br/>
+.header-nav a:hover {<br/>
+    color: #0d6efd;<br/>
+    background-color: rgba(13, 110, 253, 0.05);<br/>
+}<br/>
+<br/>
+.icon-btn {<br/>
+    background: none;<br/>
+    border: none;<br/>
+    font-size: 1.25rem;<br/>
+    cursor: pointer;<br/>
+    color: #6c757d;<br/>
+    padding: 0.5rem;<br/>
+    border-radius: 50%;<br/>
+}<br/>
+<br/>
+.icon-btn:hover {<br/>
+    background-color: #f1f3f5;<br/>
+    color: #212529;<br/>
+}<br/>
+<br/>
+/* User Profile */<br/>
+.user-profile-wrapper {<br/>
+    position: relative;<br/>
+}<br/>
+<br/>
+.user-profile {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    padding: 0.25rem 0.75rem;<br/>
+    border-left: 1px solid #dee2e6;<br/>
+    cursor: pointer;<br/>
+    transition: all 0.2s ease-in-out;<br/>
+    border-radius: 8px;<br/>
+    user-select: none;<br/>
+}<br/>
+<br/>
+.user-profile:hover,<br/>
+.user-profile.active {<br/>
+    background-color: rgba(0, 0, 0, 0.03);<br/>
+}<br/>
+<br/>
+[data-theme='dark'] .user-profile {<br/>
+    border-left-color: #404040;<br/>
+}<br/>
+<br/>
+[data-theme='dark'] .user-profile:hover,<br/>
+[data-theme='dark'] .user-profile.active {<br/>
+    background-color: rgba(255, 255, 255, 0.05);<br/>
+}<br/>
+<br/>
+.dropdown-chevron {<br/>
+    font-size: 0.8rem;<br/>
+    color: #adb5bd;<br/>
+    transition: transform 0.2s;<br/>
+}<br/>
+<br/>
+.user-profile.active .dropdown-chevron {<br/>
+    transform: rotate(180deg);<br/>
+}<br/>
+<br/>
+.user-dropdown {<br/>
+    position: absolute;<br/>
+    top: calc(100% + 10px);<br/>
+    right: 0;<br/>
+    background-color: white;<br/>
+    min-width: 180px;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);<br/>
+    border: 1px solid #e9ecef;<br/>
+    padding: 0.5rem;<br/>
+    z-index: 1000;<br/>
+    animation: fadeInScale 0.2s ease-out;<br/>
+}<br/>
+<br/>
+[data-theme='dark'] .user-dropdown {<br/>
+    background-color: #1e1e1e;<br/>
+    border-color: #333;<br/>
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);<br/>
+}<br/>
+<br/>
+.dropdown-item {<br/>
+    width: 100%;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    padding: 0.75rem 1rem;<br/>
+    border: none;<br/>
+    background: none;<br/>
+    border-radius: 8px;<br/>
+    color: #495057;<br/>
+    font-size: 0.9rem;<br/>
+    font-weight: 500;<br/>
+    cursor: pointer;<br/>
+    transition: all 0.2s;<br/>
+    text-align: left;<br/>
+}<br/>
+<br/>
+[data-theme='dark'] .dropdown-item {<br/>
+    color: #e0e0e0;<br/>
+}<br/>
+<br/>
+.dropdown-item:hover {<br/>
+    background-color: var(--bg-color);<br/>
+    color: var(--primary-color);<br/>
+}<br/>
+<br/>
+[data-theme='dark'] .dropdown-item:hover {<br/>
+    background-color: #2d2d2d;<br/>
+    color: var(--primary-color);<br/>
+}<br/>
+<br/>
+.logout-btn:hover {<br/>
+    color: #dc3545;<br/>
+    background-color: #fff5f5;<br/>
+}<br/>
+<br/>
+[data-theme='dark'] .logout-btn:hover {<br/>
+    color: #ff8787;<br/>
+    background-color: rgba(220, 53, 69, 0.1);<br/>
+}<br/>
+<br/>
+.dropdown-icon {<br/>
+    font-size: 1.1rem;<br/>
+}<br/>
+<br/>
+@keyframes fadeInScale {<br/>
+    from {<br/>
+        opacity: 0;<br/>
+        transform: scale(0.95) translateY(-10px);<br/>
+    }<br/>
+<br/>
+    to {<br/>
+        opacity: 1;<br/>
+        transform: scale(1) translateY(0);<br/>
+    }<br/>
+}<br/>
+<br/>
+.user-info {<br/>
+    text-align: right;<br/>
+}<br/>
+<br/>
+.user-name {<br/>
+    display: block;<br/>
+    font-weight: 600;<br/>
+    font-size: 0.9rem;<br/>
+    color: var(--text-color);<br/>
+}<br/>
+<br/>
+.user-avatar {<br/>
+    width: 36px;<br/>
+    height: 36px;<br/>
+    background-color: #ff7b00;<br/>
+    color: #ffffff;<br/>
+    border-radius: 50%;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    font-weight: 600;<br/>
+}<br/>
+<br/>
+/* Responsive Header */<br/>
+@media (max-width: 768px) {<br/>
+    .dashboard-header {<br/>
+        padding: 1rem;<br/>
+        gap: 0.5rem;<br/>
+    }<br/>
+<br/>
+    .header-left,<br/>
+    .header-right {<br/>
+        gap: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .logo-text {<br/>
+        font-size: 1rem;<br/>
+    }<br/>
+<br/>
+    .user-info {<br/>
+        display: none;<br/>
+    }<br/>
+<br/>
+    .user-profile {<br/>
+        padding-left: 0.5rem;<br/>
+        border-left: none;<br/>
+    }<br/>
+<br/>
+    .header-nav {<br/>
+        display: none;<br/>
+    }<br/>
+}<br/>
+<br/>
+/* Hamburger Menu - hidden on desktop */<br/>
+.hamburger-wrapper {<br/>
+    display: none;<br/>
+    position: relative;<br/>
+}<br/>
+<br/>
+@media (max-width: 768px) {<br/>
+    .hamburger-wrapper {<br/>
+        display: block;<br/>
+    }<br/>
+<br/>
+    .hamburger-btn {<br/>
+        display: flex;<br/>
+        flex-direction: column;<br/>
+        justify-content: center;<br/>
+        align-items: center;<br/>
+        gap: 5px;<br/>
+        width: 36px;<br/>
+        height: 36px;<br/>
+        background: none;<br/>
+        border: none;<br/>
+        cursor: pointer;<br/>
+        padding: 4px;<br/>
+        border-radius: 8px;<br/>
+        transition: background-color 0.2s;<br/>
+    }<br/>
+<br/>
+    .hamburger-btn:hover {<br/>
+        background-color: rgba(0, 0, 0, 0.05);<br/>
+    }<br/>
+<br/>
+    [data-theme='dark'] .hamburger-btn:hover {<br/>
+        background-color: rgba(255, 255, 255, 0.08);<br/>
+    }<br/>
+<br/>
+    .hamburger-line {<br/>
+        display: block;<br/>
+        width: 20px;<br/>
+        height: 2px;<br/>
+        background-color: var(--text-color);<br/>
+        border-radius: 2px;<br/>
+        transition: all 0.3s ease;<br/>
+        transform-origin: center;<br/>
+    }<br/>
+<br/>
+    .hamburger-btn.open .hamburger-line:nth-child(1) {<br/>
+        transform: translateY(7px) rotate(45deg);<br/>
+    }<br/>
+<br/>
+    .hamburger-btn.open .hamburger-line:nth-child(2) {<br/>
+        opacity: 0;<br/>
+    }<br/>
+<br/>
+    .hamburger-btn.open .hamburger-line:nth-child(3) {<br/>
+        transform: translateY(-7px) rotate(-45deg);<br/>
+    }<br/>
+<br/>
+    .mobile-dropdown {<br/>
+        position: absolute;<br/>
+        top: calc(100% + 10px);<br/>
+        right: 0;<br/>
+        background-color: var(--card-bg);<br/>
+        min-width: 200px;<br/>
+        border-radius: 12px;<br/>
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);<br/>
+        border: 1px solid #e9ecef;<br/>
+        padding: 0.5rem;<br/>
+        z-index: 1000;<br/>
+        animation: fadeInScale 0.2s ease-out;<br/>
+    }<br/>
+<br/>
+    [data-theme='dark'] .mobile-dropdown {<br/>
+        background-color: #1e1e1e;<br/>
+        border-color: #333;<br/>
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);<br/>
+    }<br/>
+<br/>
+    .mobile-dropdown-item {<br/>
+        display: flex;<br/>
+        align-items: center;<br/>
+        gap: 0.75rem;<br/>
+        padding: 0.75rem 1rem;<br/>
+        border-radius: 8px;<br/>
+        color: var(--text-color);<br/>
+        font-size: 0.9rem;<br/>
+        font-weight: 500;<br/>
+        text-decoration: none;<br/>
+        transition: all 0.2s;<br/>
+    }<br/>
+<br/>
+    .mobile-dropdown-item:hover {<br/>
+        background-color: var(--bg-color);<br/>
+        color: var(--primary-color);<br/>
+    }<br/>
+<br/>
+    [data-theme='dark'] .mobile-dropdown-item:hover {<br/>
+        background-color: #2d2d2d;<br/>
+    }<br/>
+<br/>
+    .mobile-dropdown-item.active {<br/>
+        background-color: rgba(255, 140, 3, 0.08);<br/>
+        color: var(--primary-color);<br/>
+        font-weight: 600;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 480px) {<br/>
+    .dashboard-header {<br/>
+        padding: 0.75rem;<br/>
+    }<br/>
+<br/>
+    .header-logo {<br/>
+        height: 32px;<br/>
+    }<br/>
+<br/>
+    .logo-text {<br/>
+        font-size: 0.9rem;<br/>
+    }<br/>
+<br/>
+    .icon-btn {<br/>
+        padding: 0.35rem;<br/>
+        font-size: 1.1rem;<br/>
+    }<br/>
+<br/>
+    .user-avatar {<br/>
+        width: 32px;<br/>
+        height: 32px;<br/>
+        font-size: 0.85rem;<br/>
+    }<br/>
+}&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/layouts/Layout.css"&gt;/* Global Layout */<br/>
+.container {<br/>
+    max-width: 1400px;<br/>
+    width: 100%;<br/>
+    margin: 0 auto;<br/>
+    padding: 0 2rem;<br/>
+    box-sizing: border-box;<br/>
+}<br/>
+<br/>
+.main-layout {<br/>
+    min-height: 100vh;<br/>
+    background-color: var(--bg-color);<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    width: 100%;<br/>
+    max-width: 100vw;<br/>
+    overflow-x: hidden;<br/>
+    box-sizing: border-box;<br/>
+}<br/>
+<br/>
+.main-content {<br/>
+    padding: 2rem 0;<br/>
+    width: 100%;<br/>
+    box-sizing: border-box;<br/>
+    flex: 1;<br/>
+}<br/>
+<br/>
+/* Response Design for Layout */<br/>
+@media (max-width: 1024px) {<br/>
+    .main-content {<br/>
+        padding: 1.5rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 768px) {<br/>
+    .main-content {<br/>
+        padding: 1rem;<br/>
+    }<br/>
+}<br/>
+<br/>
+@media (max-width: 480px) {<br/>
+    .main-content {<br/>
+        padding: 0.75rem;<br/>
+    }<br/>
+}&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/reservations/Reservations.css"&gt;/* My Reservations Page Styles (Migrated) */<br/>
+<br/>
+.my-reservations-page {<br/>
+    /* padding: 2rem 0; */<br/>
+    min-height: 80vh;<br/>
+}<br/>
+<br/>
+.page-header {<br/>
+    margin-bottom: 2rem;<br/>
+}<br/>
+<br/>
+.page-header h1 {<br/>
+    font-size: 2rem;<br/>
+    color: #1a202c;<br/>
+    margin-bottom: 0.5rem;<br/>
+}<br/>
+<br/>
+.page-header p {<br/>
+    color: #718096;<br/>
+}<br/>
+<br/>
+/* Filter Bar */<br/>
+.filter-bar-container {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    margin-bottom: 2rem;<br/>
+    flex-wrap: wrap;<br/>
+    gap: 1rem;<br/>
+    background: white;<br/>
+    padding: 1rem;<br/>
+    border-radius: 12px;<br/>
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);<br/>
+}<br/>
+<br/>
+.filter-tabs {<br/>
+    display: flex;<br/>
+    gap: 0.5rem;<br/>
+    background-color: #f7fafc;<br/>
+    padding: 0.25rem;<br/>
+    border-radius: 8px;<br/>
+}<br/>
+<br/>
+.filter-tab {<br/>
+    padding: 0.5rem 1.25rem;<br/>
+    border: none;<br/>
+    background: transparent;<br/>
+    color: #718096;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    border-radius: 6px;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.filter-tab.active {<br/>
+    background-color: white;<br/>
+    color: #3182ce;<br/>
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);<br/>
+}<br/>
+<br/>
+.filter-controls {<br/>
+    display: flex;<br/>
+    gap: 1rem;<br/>
+    align-items: center;<br/>
+}<br/>
+<br/>
+.search-input-wrapper {<br/>
+    position: relative;<br/>
+}<br/>
+<br/>
+.search-icon {<br/>
+    position: absolute;<br/>
+    left: 12px;<br/>
+    top: 50%;<br/>
+    transform: translateY(-50%);<br/>
+    color: #a0aec0;<br/>
+}<br/>
+<br/>
+.search-input {<br/>
+    padding: 0.6rem 1rem 0.6rem 2.5rem;<br/>
+    border: 1px solid #e2e8f0;<br/>
+    border-radius: 8px;<br/>
+    width: 280px;<br/>
+    font-size: 0.9rem;<br/>
+    outline: none;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.search-input:focus {<br/>
+    border-color: #3182ce;<br/>
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);<br/>
+}<br/>
+<br/>
+/* Reservation List */<br/>
+.reservation-list {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    gap: 1.25rem;<br/>
+    margin-bottom: 2rem;<br/>
+}<br/>
+<br/>
+/* Reservation Card */<br/>
+.reservation-card {<br/>
+    background-color: white;<br/>
+    border: 1px solid #edf2f7;<br/>
+    border-radius: 16px;<br/>
+    padding: 1.5rem;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: space-between;<br/>
+    transition: all 0.3s ease;<br/>
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);<br/>
+}<br/>
+<br/>
+.reservation-card:hover {<br/>
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);<br/>
+    transform: translateY(-2px);<br/>
+    border-color: #e2e8f0;<br/>
+}<br/>
+<br/>
+.reservation-card.cancelled {<br/>
+    opacity: 0.7;<br/>
+    background-color: #f9fafb;<br/>
+}<br/>
+<br/>
+.card-left {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 1.5rem;<br/>
+    flex: 2;<br/>
+}<br/>
+<br/>
+.card-icon-container {<br/>
+    width: 56px;<br/>
+    height: 56px;<br/>
+    background-color: #ebf8ff;<br/>
+    border-radius: 12px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    color: #3182ce;<br/>
+    font-size: 1.75rem;<br/>
+}<br/>
+<br/>
+.card-details {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    gap: 0.25rem;<br/>
+}<br/>
+<br/>
+.card-title {<br/>
+    margin: 0;<br/>
+    font-size: 1.1rem;<br/>
+    font-weight: 700;<br/>
+    color: #2d3748;<br/>
+}<br/>
+<br/>
+.card-subtitle {<br/>
+    margin: 0;<br/>
+    font-size: 0.8rem;<br/>
+    color: #718096;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.card-middle {<br/>
+    flex: 2;<br/>
+    padding: 0 1rem;<br/>
+}<br/>
+<br/>
+.card-date-info {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+}<br/>
+<br/>
+.calendar-icon {<br/>
+    font-size: 1.5rem;<br/>
+    background: #f7fafc;<br/>
+    padding: 0.5rem;<br/>
+    border-radius: 50%;<br/>
+}<br/>
+<br/>
+.date-text {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+}<br/>
+<br/>
+.date-main {<br/>
+    font-weight: 600;<br/>
+    color: #4a5568;<br/>
+    font-size: 0.95rem;<br/>
+    text-transform: capitalize;<br/>
+}<br/>
+<br/>
+.date-sub {<br/>
+    font-size: 0.85rem;<br/>
+    color: #a0aec0;<br/>
+}<br/>
+<br/>
+.card-right {<br/>
+    flex: 1;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: flex-end;<br/>
+    gap: 1.5rem;<br/>
+}<br/>
+<br/>
+.res-status-badge {<br/>
+    padding: 0.5rem 1rem;<br/>
+    border-radius: 9999px;<br/>
+    font-size: 0.75rem;<br/>
+    font-weight: 700;<br/>
+    text-transform: uppercase;<br/>
+    letter-spacing: 0.05em;<br/>
+}<br/>
+<br/>
+.res-status-upcoming {<br/>
+    background-color: #e6fffa;<br/>
+    color: #319795;<br/>
+}<br/>
+<br/>
+.res-status-past {<br/>
+    background-color: #edf2f7;<br/>
+    color: #718096;<br/>
+}<br/>
+<br/>
+.res-status-cancelled {<br/>
+    background-color: #fff5f5;<br/>
+    color: #e53e3e;<br/>
+}<br/>
+<br/>
+.res-status-active {<br/>
+    background-color: #ebf8ff;<br/>
+    color: #3182ce;<br/>
+}<br/>
+<br/>
+.res-status-in-progress {<br/>
+    background-color: #fefce8;<br/>
+    color: #ca8a04;<br/>
+}<br/>
+<br/>
+.res-status-completed {<br/>
+    background-color: #f0fdf4;<br/>
+    color: #16a34a;<br/>
+}<br/>
+<br/>
+.card-actions {<br/>
+    display: flex;<br/>
+    gap: 0.5rem;<br/>
+}<br/>
+<br/>
+.btn-cancel-res {<br/>
+    background: #fff5f5;<br/>
+    border: none;<br/>
+    font-size: 1rem;<br/>
+    color: #e53e3e;<br/>
+    cursor: pointer;<br/>
+    width: 36px;<br/>
+    height: 36px;<br/>
+    border-radius: 8px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.btn-edit-res {<br/>
+    background: #eff6ff;<br/>
+    border: none;<br/>
+    font-size: 1rem;<br/>
+    color: #2563eb;<br/>
+    cursor: pointer;<br/>
+    width: 36px;<br/>
+    height: 36px;<br/>
+    border-radius: 8px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.btn-edit-res:hover {<br/>
+    background-color: #dbeafe;<br/>
+    transform: scale(1.1);<br/>
+}<br/>
+<br/>
+.btn-cancel-res:hover {<br/>
+    background-color: #fed7d7;<br/>
+    transform: scale(1.1);<br/>
+}<br/>
+<br/>
+.empty-state {<br/>
+    background: white;<br/>
+    padding: 4rem 2rem;<br/>
+    text-align: center;<br/>
+    border-radius: 16px;<br/>
+    border: 2px dashed #e2e8f0;<br/>
+    color: #718096;<br/>
+}<br/>
+<br/>
+/* Pagination */<br/>
+.pagination-container {<br/>
+    display: flex;<br/>
+    justify-content: center;<br/>
+    margin-top: 2rem;<br/>
+}<br/>
+<br/>
+/* Responsive */<br/>
+@media (max-width: 968px) {<br/>
+    .reservation-card {<br/>
+        flex-direction: column;<br/>
+        align-items: flex-start;<br/>
+        gap: 1.5rem;<br/>
+    }<br/>
+<br/>
+    .card-left,<br/>
+    .card-middle,<br/>
+    .card-right {<br/>
+        width: 100%;<br/>
+        padding: 0;<br/>
+    }<br/>
+<br/>
+    .card-right {<br/>
+        justify-content: space-between;<br/>
+        padding-top: 1rem;<br/>
+        border-top: 1px solid #edf2f7;<br/>
+    }<br/>
+<br/>
+    .search-input {<br/>
+        width: 100%;<br/>
+    }<br/>
+}<br/>
+<br/>
+/* Deliver / Return Buttons */<br/>
+.btn-deliver-res {<br/>
+    background: #fefce8;<br/>
+    border: none;<br/>
+    font-size: 1rem;<br/>
+    color: #ca8a04;<br/>
+    cursor: pointer;<br/>
+    width: 36px;<br/>
+    height: 36px;<br/>
+    border-radius: 8px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.btn-deliver-res:hover {<br/>
+    background-color: #fef08a;<br/>
+    transform: scale(1.1);<br/>
+}<br/>
+<br/>
+.btn-return-res {<br/>
+    background: #f0fdf4;<br/>
+    border: none;<br/>
+    font-size: 1rem;<br/>
+    color: #16a34a;<br/>
+    cursor: pointer;<br/>
+    width: 36px;<br/>
+    height: 36px;<br/>
+    border-radius: 8px;<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.btn-return-res:hover {<br/>
+    background-color: #bbf7d0;<br/>
+    transform: scale(1.1);<br/>
+}<br/>
+<br/>
+/* Handover Modal */<br/>
+.handover-modal-overlay {<br/>
+    position: fixed;<br/>
+    top: 0;<br/>
+    left: 0;<br/>
+    right: 0;<br/>
+    bottom: 0;<br/>
+    background: rgba(0, 0, 0, 0.5);<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    justify-content: center;<br/>
+    z-index: 1000;<br/>
+    padding: 1rem;<br/>
+    animation: fadeIn 0.2s ease;<br/>
+}<br/>
+<br/>
+.handover-modal {<br/>
+    background: white;<br/>
+    border-radius: 16px;<br/>
+    width: 100%;<br/>
+    max-width: 540px;<br/>
+    max-height: 90vh;<br/>
+    overflow-y: auto;<br/>
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);<br/>
+    animation: slideUp 0.3s ease;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+}<br/>
+<br/>
+.handover-modal-header {<br/>
+    display: flex;<br/>
+    align-items: center;<br/>
+    gap: 0.75rem;<br/>
+    padding: 1.25rem 1.5rem;<br/>
+    border-bottom: 1px solid #edf2f7;<br/>
+}<br/>
+<br/>
+.handover-modal-icon {<br/>
+    font-size: 1.5rem;<br/>
+}<br/>
+<br/>
+.handover-modal-header h3 {<br/>
+    margin: 0;<br/>
+    font-size: 1.15rem;<br/>
+    font-weight: 700;<br/>
+    color: #1a202c;<br/>
+    flex: 1;<br/>
+}<br/>
+<br/>
+.handover-modal-close {<br/>
+    background: none;<br/>
+    border: none;<br/>
+    font-size: 1.25rem;<br/>
+    color: #a0aec0;<br/>
+    cursor: pointer;<br/>
+    padding: 0.25rem;<br/>
+    border-radius: 6px;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.handover-modal-close:hover {<br/>
+    background: #f7fafc;<br/>
+    color: #4a5568;<br/>
+}<br/>
+<br/>
+.handover-modal-body {<br/>
+    padding: 1.5rem;<br/>
+    overflow-y: auto;<br/>
+    flex: 1;<br/>
+}<br/>
+<br/>
+.handover-modal-description {<br/>
+    color: #4a5568;<br/>
+    font-size: 0.95rem;<br/>
+    margin: 0 0 1.25rem 0;<br/>
+    line-height: 1.5;<br/>
+}<br/>
+<br/>
+.handover-modal-label {<br/>
+    display: block;<br/>
+    font-weight: 600;<br/>
+    color: #4a5568;<br/>
+    margin-bottom: 0.5rem;<br/>
+    font-size: 0.9rem;<br/>
+}<br/>
+<br/>
+.handover-modal-textarea {<br/>
+    width: 100%;<br/>
+    padding: 0.75rem;<br/>
+    border: 1px solid #e2e8f0;<br/>
+    border-radius: 8px;<br/>
+    font-size: 0.9rem;<br/>
+    font-family: inherit;<br/>
+    resize: vertical;<br/>
+    outline: none;<br/>
+    transition: border-color 0.2s;<br/>
+    box-sizing: border-box;<br/>
+}<br/>
+<br/>
+.handover-modal-textarea:focus {<br/>
+    border-color: #3182ce;<br/>
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);<br/>
+}<br/>
+<br/>
+.handover-modal-actions {<br/>
+    display: flex;<br/>
+    gap: 0.75rem;<br/>
+    justify-content: flex-end;<br/>
+    padding: 1rem 1.5rem;<br/>
+    border-top: 1px solid #edf2f7;<br/>
+}<br/>
+<br/>
+.btn-handover-cancel {<br/>
+    padding: 0.6rem 1.25rem;<br/>
+    border: 1px solid #e2e8f0;<br/>
+    background: white;<br/>
+    color: #4a5568;<br/>
+    border-radius: 8px;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.btn-handover-cancel:hover {<br/>
+    background: #f7fafc;<br/>
+}<br/>
+<br/>
+.btn-handover-confirm {<br/>
+    padding: 0.6rem 1.25rem;<br/>
+    border: none;<br/>
+    border-radius: 8px;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    color: white;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.btn-handover-confirm.btn-deliver {<br/>
+    background: #d97706;<br/>
+}<br/>
+<br/>
+.btn-handover-confirm.btn-deliver:hover {<br/>
+    background: #b45309;<br/>
+}<br/>
+<br/>
+.btn-handover-confirm.btn-return {<br/>
+    background: #16a34a;<br/>
+}<br/>
+<br/>
+.btn-handover-confirm.btn-return:hover {<br/>
+    background: #15803d;<br/>
+}<br/>
+<br/>
+.btn-handover-confirm:disabled,<br/>
+.btn-handover-cancel:disabled {<br/>
+    opacity: 0.6;<br/>
+    cursor: not-allowed;<br/>
+}<br/>
+<br/>
+@keyframes fadeIn {<br/>
+    from { opacity: 0; }<br/>
+    to { opacity: 1; }<br/>
+}<br/>
+<br/>
+@keyframes slideUp {<br/>
+    from { opacity: 0; transform: translateY(20px); }<br/>
+    to { opacity: 1; transform: translateY(0); }<br/>
+}<br/>
+&lt;/style&gt;<br/>
+  &lt;style type="text/css" data-vite-dev-id="C:/Users/anderson.rodriguez/Documents/ProyectosTrainingAI/reservasSofka/Frontend/src/ui/styles/reservations/ReminderAlerts.css"&gt;/* Reminder Alerts Styles */<br/>
+<br/>
+.reminder-alerts-container {<br/>
+    margin-bottom: 1.5rem;<br/>
+    border-radius: 12px;<br/>
+    overflow: hidden;<br/>
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);<br/>
+    animation: slideDown 0.3s ease;<br/>
+}<br/>
+<br/>
+.reminder-alerts-header {<br/>
+    display: flex;<br/>
+    justify-content: space-between;<br/>
+    align-items: center;<br/>
+    padding: 0.75rem 1.25rem;<br/>
+    background: #1a202c;<br/>
+    color: white;<br/>
+}<br/>
+<br/>
+.reminder-alerts-title {<br/>
+    font-weight: 700;<br/>
+    font-size: 0.95rem;<br/>
+}<br/>
+<br/>
+.btn-clear-all {<br/>
+    background: rgba(255, 255, 255, 0.15);<br/>
+    border: none;<br/>
+    color: white;<br/>
+    padding: 0.35rem 0.75rem;<br/>
+    border-radius: 6px;<br/>
+    font-size: 0.8rem;<br/>
+    font-weight: 600;<br/>
+    cursor: pointer;<br/>
+    transition: background 0.2s;<br/>
+}<br/>
+<br/>
+.btn-clear-all:hover {<br/>
+    background: rgba(255, 255, 255, 0.25);<br/>
+}<br/>
+<br/>
+.reminder-alerts-list {<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+}<br/>
+<br/>
+.reminder-alert {<br/>
+    display: flex;<br/>
+    align-items: flex-start;<br/>
+    gap: 0.75rem;<br/>
+    padding: 1rem 1.25rem;<br/>
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);<br/>
+    transition: background 0.2s;<br/>
+}<br/>
+<br/>
+.reminder-alert:last-child {<br/>
+    border-bottom: none;<br/>
+}<br/>
+<br/>
+.reminder-alert:hover {<br/>
+    filter: brightness(0.97);<br/>
+}<br/>
+<br/>
+/* Alert severity variants */<br/>
+.reminder-alert.alert-warning {<br/>
+    background: #fffbeb;<br/>
+    border-left: 4px solid #f59e0b;<br/>
+}<br/>
+<br/>
+.reminder-alert.alert-urgent {<br/>
+    background: #fff7ed;<br/>
+    border-left: 4px solid #f97316;<br/>
+}<br/>
+<br/>
+.reminder-alert.alert-danger {<br/>
+    background: #fef2f2;<br/>
+    border-left: 4px solid #ef4444;<br/>
+}<br/>
+<br/>
+.reminder-alert.alert-info {<br/>
+    background: #eff6ff;<br/>
+    border-left: 4px solid #3b82f6;<br/>
+}<br/>
+<br/>
+.alert-icon {<br/>
+    font-size: 1.5rem;<br/>
+    flex-shrink: 0;<br/>
+    margin-top: 0.1rem;<br/>
+}<br/>
+<br/>
+.alert-content {<br/>
+    flex: 1;<br/>
+    display: flex;<br/>
+    flex-direction: column;<br/>
+    gap: 0.25rem;<br/>
+}<br/>
+<br/>
+.alert-badge {<br/>
+    display: inline-block;<br/>
+    width: fit-content;<br/>
+    padding: 0.15rem 0.5rem;<br/>
+    border-radius: 9999px;<br/>
+    font-size: 0.7rem;<br/>
+    font-weight: 700;<br/>
+    text-transform: uppercase;<br/>
+    letter-spacing: 0.05em;<br/>
+}<br/>
+<br/>
+.alert-warning .alert-badge {<br/>
+    background: #fef3c7;<br/>
+    color: #b45309;<br/>
+}<br/>
+<br/>
+.alert-urgent .alert-badge {<br/>
+    background: #fed7aa;<br/>
+    color: #c2410c;<br/>
+}<br/>
+<br/>
+.alert-danger .alert-badge {<br/>
+    background: #fecaca;<br/>
+    color: #b91c1c;<br/>
+}<br/>
+<br/>
+.alert-info .alert-badge {<br/>
+    background: #dbeafe;<br/>
+    color: #1d4ed8;<br/>
+}<br/>
+<br/>
+.alert-message {<br/>
+    margin: 0;<br/>
+    color: #374151;<br/>
+    font-size: 0.9rem;<br/>
+    line-height: 1.4;<br/>
+}<br/>
+<br/>
+.alert-reservation {<br/>
+    font-size: 0.8rem;<br/>
+    color: #6b7280;<br/>
+    font-weight: 500;<br/>
+}<br/>
+<br/>
+.alert-dismiss {<br/>
+    background: none;<br/>
+    border: none;<br/>
+    font-size: 1rem;<br/>
+    color: #9ca3af;<br/>
+    cursor: pointer;<br/>
+    padding: 0.25rem;<br/>
+    border-radius: 6px;<br/>
+    flex-shrink: 0;<br/>
+    transition: all 0.2s;<br/>
+}<br/>
+<br/>
+.alert-dismiss:hover {<br/>
+    background: rgba(0, 0, 0, 0.05);<br/>
+    color: #4b5563;<br/>
+}<br/>
+<br/>
+@keyframes slideDown {<br/>
+    from {<br/>
+        opacity: 0;<br/>
+        transform: translateY(-10px);<br/>
+    }<br/>
+    to {<br/>
+        opacity: 1;<br/>
+        transform: translateY(0);<br/>
+    }<br/>
+}<br/>
+<br/>
+/* Responsive */<br/>
+@media (max-width: 768px) {<br/>
+    .reminder-alerts-header {<br/>
+        flex-direction: column;<br/>
+        gap: 0.5rem;<br/>
+        align-items: flex-start;<br/>
+    }<br/>
+<br/>
+    .reminder-alert {<br/>
+        padding: 0.75rem 1rem;<br/>
+    }<br/>
+}<br/>
+&lt;/style&gt;<br/>
+ &lt;/head&gt;<br/>
+ &lt;body&gt;<br/>
+  &lt;div id="root"&gt;<br/>
+   &lt;div class="main-layout"&gt;<br/>
+    &lt;header class="dashboard-header"&gt;<br/>
+     &lt;div class="container"&gt;<br/>
+      &lt;div class="header-left"&gt;<br/>
+       &lt;img alt="Sofka Logo" class="header-logo" src="/src/assets/LogoSofka_FondoBlanco_peq.png"&gt;<br/>
+       &lt;h1 class="logo-text"&gt;Reservas Casa Sofka&lt;/h1&gt;<br/>
+       &lt;nav class="header-nav"&gt;<br/>
+        &lt;a aria-current="page" class="active" href="/dashboard" data-discover="true"&gt;Explorar&lt;/a&gt;&lt;a class="" href="/my-reservations" data-discover="true"&gt;Mis Reservas&lt;/a&gt;<br/>
+       &lt;/nav&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="header-right"&gt;<br/>
+       &lt;button class="icon-btn"&gt;ðŸŒ™&lt;/button&gt;<br/>
+       &lt;div class="user-profile-wrapper"&gt;<br/>
+        &lt;div class="user-profile "&gt;<br/>
+         &lt;div class="user-info"&gt;<br/>
+          &lt;span class="user-name"&gt;Esteban&lt;/span&gt;<br/>
+         &lt;/div&gt;&lt;span class="dropdown-chevron"&gt;â–¾&lt;/span&gt;<br/>
+        &lt;/div&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;div class="hamburger-wrapper"&gt;<br/>
+        &lt;button class="hamburger-btn " aria-label="MenÃº de navegaciÃ³n"&gt;&lt;span class="hamburger-line"&gt;&lt;/span&gt;&lt;span class="hamburger-line"&gt;&lt;/span&gt;&lt;span class="hamburger-line"&gt;&lt;/span&gt;&lt;/button&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+    &lt;/header&gt;<br/>
+    &lt;div class="main-content"&gt;<br/>
+     &lt;div class="dashboard-container"&gt;<br/>
+      &lt;main class="dashboard-main"&gt;<br/>
+       &lt;div class="container"&gt;<br/>
+        &lt;div class="search-bar-container"&gt;<br/>
+         &lt;div class="search-input-wrapper"&gt;<br/>
+          &lt;span class="search-icon"&gt;ðŸ”?&lt;/span&gt;&lt;input placeholder="Buscar salas o equipos..." class="search-input" type="text" value=""&gt;<br/>
+         &lt;/div&gt;<br/>
+        &lt;/div&gt;<br/>
+        &lt;div class="dashboard-content"&gt;<br/>
+         &lt;div class="dashboard-results-section"&gt;<br/>
+          &lt;div class="results-header"&gt;<br/>
+           &lt;h2&gt;Resultados &lt;span class="results-count"&gt;(4 elementos encontrados)&lt;/span&gt;&lt;/h2&gt;<br/>
+          &lt;/div&gt;<br/>
+          &lt;div class="results-grid"&gt;<br/>
+           &lt;div class="item-card"&gt;<br/>
+            &lt;div class="item-image-container"&gt;<br/>
+             &lt;img alt="Cowork Norte" class="item-image" src="https://picsum.photos/seed/cowork-norte/900/600"&gt;&lt;span class="status-badge unavailable"&gt;NO DISPONIBLE&lt;/span&gt;<br/>
+            &lt;/div&gt;<br/>
+            &lt;div class="item-content"&gt;<br/>
+             &lt;div class="item-header"&gt;<br/>
+              &lt;h3&gt;Cowork Norte&lt;/h3&gt;&lt;span class="item-category"&gt;ðŸ?¢ Sala&lt;/span&gt;<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-location"&gt;<br/>
+              ðŸ“? Capacidad: 20 personas<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-tags"&gt;&lt;/div&gt;<br/>
+             &lt;div class="item-actions"&gt;<br/>
+              &lt;button class="btn-book"&gt;ðŸ“… Reservar&lt;/button&gt;<br/>
+             &lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+           &lt;/div&gt;<br/>
+           &lt;div class="modal-overlay"&gt;<br/>
+            &lt;div class="modal-content"&gt;<br/>
+             &lt;button class="modal-close"&gt;âœ•&lt;/button&gt;<br/>
+             &lt;div class="modal-header"&gt;<br/>
+              &lt;div class="modal-item-info"&gt;<br/>
+               &lt;img alt="Cowork Norte" class="modal-item-image" src="https://picsum.photos/seed/cowork-norte/900/600"&gt;<br/>
+               &lt;div class="modal-item-details"&gt;<br/>
+                &lt;h2&gt;Cowork Norte&lt;/h2&gt;<br/>
+                &lt;p class="modal-item-location"&gt;ðŸ“? Sede Central&lt;/p&gt;<br/>
+                &lt;p class="modal-item-type"&gt;ðŸ?¢ LocaciÃ³n&lt;/p&gt;<br/>
+               &lt;/div&gt;<br/>
+              &lt;/div&gt;<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="modal-body"&gt;<br/>
+              &lt;div class="modal-columns"&gt;<br/>
+               &lt;div class="modal-left-column"&gt;<br/>
+                &lt;div class="modal-section"&gt;<br/>
+                 &lt;h3&gt;Selecciona una Fecha&lt;/h3&gt;<br/>
+                 &lt;div class="calendar-container"&gt;<br/>
+                  &lt;div class="calendar-header"&gt;<br/>
+                   &lt;button class="calendar-nav-btn"&gt;â†?&lt;/button&gt;<br/>
+                   &lt;h3&gt;Marzo 2026&lt;/h3&gt;&lt;button class="calendar-nav-btn"&gt;â†’&lt;/button&gt;<br/>
+                  &lt;/div&gt;<br/>
+                  &lt;div class="calendar-weekdays"&gt;<br/>
+                   &lt;div&gt;<br/>
+                    Dom<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div&gt;<br/>
+                    Lun<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div&gt;<br/>
+                    Mar<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div&gt;<br/>
+                    MiÃ©<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div&gt;<br/>
+                    Jue<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div&gt;<br/>
+                    Vie<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div&gt;<br/>
+                    SÃ¡b<br/>
+                   &lt;/div&gt;<br/>
+                  &lt;/div&gt;<br/>
+                  &lt;div class="calendar-grid"&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    1<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    2<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    3<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    4<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    5<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    6<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    7<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    8<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    9<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    10<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    11<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    12<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    13<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    14<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    15<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    16<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day unavailable  past"&gt;<br/>
+                    17<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    18<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available selected "&gt;<br/>
+                    19<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    20<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    21<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    22<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    23<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    24<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    25<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    26<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    27<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    28<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    29<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    30<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="calendar-day available  "&gt;<br/>
+                    31<br/>
+                   &lt;/div&gt;<br/>
+                  &lt;/div&gt;<br/>
+                  &lt;div class="calendar-legend"&gt;<br/>
+                   &lt;div class="legend-item"&gt;<br/>
+                    &lt;span class="legend-box available"&gt;&lt;/span&gt;&lt;span&gt;DISPONIBLE&lt;/span&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="legend-item"&gt;<br/>
+                    &lt;span class="legend-box selected"&gt;&lt;/span&gt;&lt;span&gt;SELECCIONADO&lt;/span&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="legend-item"&gt;<br/>
+                    &lt;span class="legend-box unavailable"&gt;âœ•&lt;/span&gt;&lt;span&gt;OCUPADO&lt;/span&gt;<br/>
+                   &lt;/div&gt;<br/>
+                  &lt;/div&gt;<br/>
+                 &lt;/div&gt;<br/>
+                &lt;/div&gt;<br/>
+               &lt;/div&gt;<br/>
+               &lt;div class="modal-right-column"&gt;<br/>
+                &lt;div class="modal-section"&gt;<br/>
+                 &lt;h3&gt;Horario de Reserva&lt;/h3&gt;<br/>
+                 &lt;div class="duration-selector"&gt;<br/>
+                  &lt;div class="time-range-inputs"&gt;<br/>
+                   &lt;div class="time-input-group"&gt;<br/>
+                    &lt;label for="startTime"&gt;INICIO&lt;/label&gt;&lt;input id="startTime" min="08:00" max="18:00" class="time-conflict" type="time" value="16:00"&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="time-separator"&gt;<br/>
+                    â†’<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="time-input-group"&gt;<br/>
+                    &lt;label for="endTime"&gt;FIN&lt;/label&gt;&lt;input id="endTime" min="08:00" max="18:00" class="time-conflict" type="time" value="17:00"&gt;<br/>
+                   &lt;/div&gt;<br/>
+                  &lt;/div&gt;<br/>
+                  &lt;div class="time-conflict-warning"&gt;<br/>
+                   &lt;span class="conflict-icon"&gt;âš&nbsp;ï¸?&lt;/span&gt;&lt;span&gt;El horario seleccionado se solapa con una reserva existente&lt;/span&gt;<br/>
+                  &lt;/div&gt;<br/>
+                  &lt;div class="time-slots-section "&gt;<br/>
+                   &lt;div class="time-slots-header"&gt;<br/>
+                    &lt;span class="time-slots-title"&gt;Disponibilidad del dÃ­a&lt;/span&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="time-slots-timeline"&gt;<br/>
+                    &lt;div class="time-slot free" title="08:00 - 09:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;08:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="09:00 - 10:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;09:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="10:00 - 11:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;10:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="11:00 - 12:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;11:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="12:00 - 13:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;12:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="13:00 - 14:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;13:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="14:00 - 15:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;14:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="15:00 - 16:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;15:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot conflict" title="16:00 - 17:00 (Ocupado)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;16:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="time-slot free" title="17:00 - 18:00 (Disponible)"&gt;<br/>
+                     &lt;span class="time-slot-label"&gt;17:00&lt;/span&gt;<br/>
+                     &lt;div class="time-slot-bar"&gt;&lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="time-slots-legend"&gt;<br/>
+                    &lt;div class="slot-legend-item"&gt;<br/>
+                     &lt;span class="slot-legend-box free"&gt;&lt;/span&gt;&lt;span&gt;Disponible&lt;/span&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="slot-legend-item"&gt;<br/>
+                     &lt;span class="slot-legend-box busy"&gt;&lt;/span&gt;&lt;span&gt;Ocupado&lt;/span&gt;<br/>
+                    &lt;/div&gt;<br/>
+                    &lt;div class="slot-legend-item"&gt;<br/>
+                     &lt;span class="slot-legend-box selected"&gt;&lt;/span&gt;&lt;span&gt;Seleccionado&lt;/span&gt;<br/>
+                    &lt;/div&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="busy-slots-detail"&gt;<br/>
+                    &lt;span class="busy-detail-title"&gt;Reservas existentes:&lt;/span&gt;&lt;span class="busy-slot-tag"&gt;16:00 - 17:00&lt;/span&gt;<br/>
+                   &lt;/div&gt;<br/>
+                  &lt;/div&gt;<br/>
+                  &lt;div class="time-info"&gt;<br/>
+                   &lt;span class="info-icon"&gt;â„¹ï¸?&lt;/span&gt;&lt;span&gt;solo se puede reservar de: 8:00 AM - 6:00 PM&lt;/span&gt;<br/>
+                  &lt;/div&gt;<br/>
+                 &lt;/div&gt;<br/>
+                 &lt;div class="modal-section-attendees" style="margin-top: 15px;"&gt;<br/>
+                  &lt;label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; color: rgb(85, 85, 85);"&gt;Asistentes:&lt;/label&gt;&lt;input min="1" type="number" value="1" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid rgb(221, 221, 221); font-size: 1rem; transition: border-color 0.2s; background-color: rgb(249, 249, 249);"&gt;<br/>
+                 &lt;/div&gt;<br/>
+                &lt;/div&gt;<br/>
+                &lt;div class="modal-section"&gt;<br/>
+                 &lt;h3&gt;Equipos Adicionales&lt;/h3&gt;<br/>
+                 &lt;div class="equipment-selector"&gt;<br/>
+                  &lt;div class="custom-select "&gt;<br/>
+                   &lt;div class="select-inner"&gt;<br/>
+                    &lt;label class="equipment-label-inner"&gt;Equipamiento&lt;/label&gt;<br/>
+                    &lt;div class="selected-values"&gt;<br/>
+                     &lt;span class="placeholder"&gt;-- Selecciona equipos --&lt;/span&gt;<br/>
+                    &lt;/div&gt;<br/>
+                   &lt;/div&gt;<br/>
+                   &lt;div class="select-icon-group"&gt;<br/>
+                    &lt;span class="equipment-main-icon"&gt;ðŸ›&nbsp;ï¸?&lt;/span&gt;<br/>
+                    &lt;div class="select-arrow"&gt;&lt;/div&gt;<br/>
+                   &lt;/div&gt;<br/>
+                  &lt;/div&gt;<br/>
+                 &lt;/div&gt;<br/>
+                &lt;/div&gt;<br/>
+               &lt;/div&gt;<br/>
+              &lt;/div&gt;<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="modal-footer"&gt;<br/>
+              &lt;button class="btn-cancel"&gt;Cancelar&lt;/button&gt;&lt;button class="btn-confirm" disabled&gt;Confirmar Reserva&lt;/button&gt;<br/>
+             &lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+           &lt;/div&gt;<br/>
+           &lt;div class="item-card"&gt;<br/>
+            &lt;div class="item-image-container"&gt;<br/>
+             &lt;img alt="Laboratorio Innovacion" class="item-image" src="https://picsum.photos/seed/lab-innovacion/900/600"&gt;&lt;span class="status-badge unavailable"&gt;NO DISPONIBLE&lt;/span&gt;<br/>
+            &lt;/div&gt;<br/>
+            &lt;div class="item-content"&gt;<br/>
+             &lt;div class="item-header"&gt;<br/>
+              &lt;h3&gt;Laboratorio Innovacion&lt;/h3&gt;&lt;span class="item-category"&gt;ðŸ?¢ Sala&lt;/span&gt;<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-location"&gt;<br/>
+              ðŸ“? Capacidad: 8 personas<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-tags"&gt;&lt;/div&gt;<br/>
+             &lt;div class="item-actions"&gt;<br/>
+              &lt;button class="btn-book"&gt;ðŸ“… Reservar&lt;/button&gt;<br/>
+             &lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+           &lt;/div&gt;<br/>
+           &lt;div class="item-card"&gt;<br/>
+            &lt;div class="item-image-container"&gt;<br/>
+             &lt;img alt="Sala Andina" class="item-image" src="https://picsum.photos/seed/sala-andina/900/600"&gt;&lt;span class="status-badge unavailable"&gt;NO DISPONIBLE&lt;/span&gt;<br/>
+            &lt;/div&gt;<br/>
+            &lt;div class="item-content"&gt;<br/>
+             &lt;div class="item-header"&gt;<br/>
+              &lt;h3&gt;Sala Andina&lt;/h3&gt;&lt;span class="item-category"&gt;ðŸ?¢ Sala&lt;/span&gt;<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-location"&gt;<br/>
+              ðŸ“? Capacidad: 12 personas<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-tags"&gt;&lt;/div&gt;<br/>
+             &lt;div class="item-actions"&gt;<br/>
+              &lt;button class="btn-book"&gt;ðŸ“… Reservar&lt;/button&gt;<br/>
+             &lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+           &lt;/div&gt;<br/>
+           &lt;div class="item-card"&gt;<br/>
+            &lt;div class="item-image-container"&gt;<br/>
+             &lt;img alt="Sala Panorama" class="item-image" src="https://picsum.photos/seed/sala-panorama/900/600"&gt;&lt;span class="status-badge unavailable"&gt;NO DISPONIBLE&lt;/span&gt;<br/>
+            &lt;/div&gt;<br/>
+            &lt;div class="item-content"&gt;<br/>
+             &lt;div class="item-header"&gt;<br/>
+              &lt;h3&gt;Sala Panorama&lt;/h3&gt;&lt;span class="item-category"&gt;ðŸ?¢ Sala&lt;/span&gt;<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-location"&gt;<br/>
+              ðŸ“? Capacidad: 16 personas<br/>
+             &lt;/div&gt;<br/>
+             &lt;div class="item-tags"&gt;&lt;/div&gt;<br/>
+             &lt;div class="item-actions"&gt;<br/>
+              &lt;button class="btn-book"&gt;ðŸ“… Reservar&lt;/button&gt;<br/>
+             &lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+           &lt;/div&gt;<br/>
+          &lt;/div&gt;<br/>
+         &lt;/div&gt;<br/>
+        &lt;/div&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/main&gt;<br/>
+     &lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+   &lt;/div&gt;<br/>
+  &lt;/div&gt;<br/>
+  &lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;<br/>
+ &lt;/body&gt;<br/>
+&lt;/html&gt;</code></pre></div></body></html>
