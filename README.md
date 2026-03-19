@@ -1,6 +1,6 @@
 # Screenplay Automation Project - Reservas Sofka
 
-Este proyecto contiene la automatización de pruebas para la aplicación **Reservas Sofka**, utilizando el patrón de diseño **Screenplay** con Serenity BDD, Cucumber y Gradle.
+Este proyecto contiene la automatización de pruebas para la aplicación **Reservas Sofka**, la cual puedes encontrar en el siguiente repositorio: [reservasSofka](https://github.com/Sherman97/reservasSofka). El framework utilizado es **Screenplay** con Serenity BDD, Cucumber y Gradle.
 
 ## 🚀 Comenzando
 
