@@ -7,6 +7,8 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
+import net.serenitybdd.screenplay.waits.WaitUntil;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class Login implements Task {
     private final String email;
@@ -25,9 +27,11 @@ public class Login implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Open.url("http://localhost:5173"),
+                WaitUntil.the(LoginPage.EMAIL_INPUT, isVisible()).forNoMoreThan(10).seconds(),
                 Enter.theValue(email).into(LoginPage.EMAIL_INPUT),
                 Enter.theValue(password).into(LoginPage.PASSWORD_INPUT),
-                Click.on(LoginPage.LOGIN_BUTTON)
+                Click.on(LoginPage.LOGIN_BUTTON),
+                WaitUntil.the(com.reservassofka.screenplay.userinterfaces.DashboardPage.AVAILABLE_WORKSPACE_BOOK_BUTTON, isVisible()).forNoMoreThan(20).seconds()
         );
     }
 }

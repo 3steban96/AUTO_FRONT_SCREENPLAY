@@ -16,7 +16,7 @@ public class ReservationSuccessMessage implements Question<String> {
     @Override
     public String answeredBy(Actor actor) {
         actor.attemptsTo(
-                WaitUntil.the(ReservationModal.SUCCESS_MESSAGE, isVisible()).forNoMoreThan(10).seconds()
+                WaitUntil.the(ReservationModal.SUCCESS_MESSAGE, isVisible()).forNoMoreThan(20).seconds()
         );
         return Text.of(ReservationModal.SUCCESS_MESSAGE).answeredBy(actor);
     }

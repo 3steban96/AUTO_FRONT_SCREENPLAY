@@ -1,28 +1,28 @@
-# Compile and build outputs
-.gradle/
-build/
-target/*
-!target/site/
-target/site/*
-!target/site/serenity/
-out/
-bin/
-*.class
-
-# IDE files
+# IDE
 .idea/
-.vscode/
 *.iml
+.vscode/
 *.iws
 *.ipr
-.settings/
-.project
-.classpath
-.factorypath
 
-# Logs and temp files
+# OS
+.DS_Store
+Thumbs.db
+
+# Gradle
+.gradle/
+build/
+
+# Maven / Serenity reports (generados)
+target/
+
+# Salida de compilación de IDEs
+bin/
+out/
+
+# Logs
 *.log
-tmp/
+output.log
 
-# Exception for Serenity BDD reports (per user request)
-!target/site/serenity/
+# Historial de ejecuciones Serenity (generado)
+history/

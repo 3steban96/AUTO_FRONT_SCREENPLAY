@@ -32,7 +32,11 @@ dependencies {
 test {
     useJUnit()
     systemProperties System.getProperties()
+    jvmArgs '-Dfile.encoding=UTF-8'
 }
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 gradle.startParameter.continueOnFailure = true
 

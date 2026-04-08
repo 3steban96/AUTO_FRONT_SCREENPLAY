@@ -6,7 +6,6 @@ import com.reservassofka.screenplay.tasks.FillReservationForm;
 import com.reservassofka.screenplay.tasks.Login;
 import com.reservassofka.screenplay.tasks.OpenReservationModal;
 import com.reservassofka.screenplay.userinterfaces.ReservationModal;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,15 +22,10 @@ import static org.hamcrest.Matchers.containsString;
 
 public class CreateReservationStepDefinitions {
 
-    @Before
-    public void setTheStage() {
-        OnStage.setTheStage(new OnlineCast());
-    }
-
     @Given("the employee is logged in and is on the Dashboard")
     public void theEmployeeIsLoggedInAndIsOnTheDashboard() {
         theActorCalled("Employee").attemptsTo(
-                Login.withCredentials("admin@sofka.com.co", "password123")
+                Login.withCredentials("admin@sofka.com.co", "password1234")
         );
     }
 
@@ -44,10 +38,10 @@ public class CreateReservationStepDefinitions {
 
     @When("they fill the reservation form with valid details for today")
     public void theyFillTheReservationFormWithValidDetailsForToday() {
-        // Using Day 20 as Day 19 might be full from previous test runs.
-        String day = "20";
-        String startTime = "10:00"; 
-        String endTime = "11:00";
+        // Día 22 - fecha futura libre para evitar colisión con ejecuciones anteriores de la prueba (08/04/2026 10:09am).
+        String day = "22";
+        String startTime = "10:09"; 
+        String endTime = "11:09";
         theActorInTheSpotlight().attemptsTo(
                 FillReservationForm.withDetails(day, startTime, endTime)
         );
@@ -62,8 +56,9 @@ public class CreateReservationStepDefinitions {
 
     @When("they attempt to create a reservation with the start time after the end time")
     public void theyAttemptToCreateAReservationWithTheStartTimeAfterTheEndTime() {
-        // Invalid times: Start time is greater than end time
-        String day = "19";
+        // Tiempos inválidos: hora inicio mayor que hora fin
+        // Día 29 - fecha futura para que el calendario lo permita seleccionar (08/04/2026 10:09am).
+        String day = "29";
         String startTime = "14:00"; 
         String endTime = "13:00";
         theActorInTheSpotlight().attemptsTo(

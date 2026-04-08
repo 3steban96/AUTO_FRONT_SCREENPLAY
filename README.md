@@ -1,6 +1,6 @@
 # Screenplay Automation Project - Reservas Sofka
 
-Este proyecto contiene la automatización de pruebas para la aplicación **Reservas Sofka**, la cual puedes encontrar en el siguiente repositorio: [reservasSofka](https://github.com/Sherman97/reservasSofka). El framework utilizado es **Screenplay** con Serenity BDD, Cucumber y Gradle.
+Este proyecto contiene la automatización de pruebas para la aplicación **Reservas Sofka**, utilizando el patrón de diseño **Screenplay** con Serenity BDD, Cucumber y Gradle.
 
 ## 🚀 Comenzando
 
@@ -36,7 +36,7 @@ El proyecto sigue los principios del patrón Screenplay, promoviendo la reutiliz
 ## ⚠️ Condiciones Requeridas para una Ejecución Exitosa
 Para que los escenarios de prueba finalicen exitosamente sin errores, el entorno debe cumplir las siguientes condiciones:
 
-1. **Disponibilidad de Datos (Libertad de Reservas)**: El escenario de éxito crea una reserva real en la base de datos usando el **Día 20** de las **10:00 a las 11:00**. Si este horario ya está ocupado por una ejecución anterior o no corresponde a la fecha actual en la que se ejecuta la prueba, la prueba fallará intencionalmente al detectar el conflicto. Para correr el test nuevamente, debes borrar las reservas previas desde la base de datos o cambiar el día/hora en el archivo `CreateReservationStepDefinitions.java`.
+1. **Disponibilidad de Datos (Libertad de Reservas)**: El escenario de éxito crea una reserva real en la base de datos usando el **Día 20** de las **10:00 a las 11:00**. Si este horario ya está ocupado por una ejecución anterior, la prueba fallará intencionalmente al detectar el conflicto. Para correr el test nuevamente, debes borrar las reservas previas desde la base de datos o cambiar el día/hora en el archivo `CreateReservationStepDefinitions.java`.
 2. **Frontend en Ejecución**: El servidor local de React (Vite) debe estar levantado (`npm run dev`) para que responda a `http://localhost:5173`.
 3. **Backend e Infraestructura**: Los servicios backend (APIs y bases de datos) deben estar funcionando, dado que el login y la carga del dashboard (`admin@sofka.com.co`) consultan los datos reales.
 4. **Navegador Embebido (Chrome)**: Debe tener Google Chrome instalado. Se recomienda no utilizar activamente el ordenador durante la ejecución para evitar cierres o interrupciones de foco sobre la ventana del navegador.
